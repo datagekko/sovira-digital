@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sovira Digital Landing Page
 
-## Getting Started
+A high-converting landing page for Sovira Digital - the premier Shopify consultancy for momentum fashion & wellness brands turning €1-1.5M annually.
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Framework:** Next.js 14 (App Router)
+- **Styling:** Tailwind CSS
+- **Typography:** Neue Haas Grotesk Display, Spectral, Suisse Int'l
+- **Deployment:** Optimized for Vercel
+
+## 🎨 Design System
+
+### Brand Colors
+- `sovira-black`: #111111
+- `sovira-graphite`: #2F2F2F  
+- `sovira-paper`: #F4F4F4
+- `sovira-chartreuse`: #C6FF00 (accent, ≤5% usage)
+- `sovira-neutral`: #9B9B9B
+
+### Typography Scale
+- H1: 96px (Neue Haas)
+- H2: 72px (Neue Haas)
+- H3: 48px (Neue Haas)
+- Body: 16px (Suisse Int'l)
+- Accent: Spectral Italic
+
+## 📁 Project Structure
+
+```
+sovira/
+├── app/
+│   ├── globals.css      # Global styles & font imports
+│   ├── layout.tsx       # Root layout with metadata
+│   └── page.tsx         # Landing page composition
+├── components/
+│   ├── HeroSection.tsx      # Hero with primary CTA
+│   ├── ProofSection.tsx     # Social proof & metrics
+│   ├── BrandReadySprint.tsx # Sprint pricing tiers
+│   ├── RevShareAccelerator.tsx # Rev-share model
+│   ├── ComparisonTable.tsx  # Agency comparison
+│   ├── CTASection.tsx       # Final conversion push
+│   └── Footer.tsx           # Minimal footer
+├── public/
+│   └── fonts/              # Custom font files
+└── tailwind.config.ts      # Tailwind configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚦 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Install dependencies:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Run development server:
+```bash
+npm run dev
+```
 
-## Learn More
+3. Open [http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+## 📝 Content Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The landing page supports these customizable variables:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Primary CTA Text** - Default: "Book Discovery Call"
+2. **Client Personas** - Default: "fashion & wellness brands"
+3. **Headline Hook** - Default: "Launch in 14 days"
+4. **Section Content** - Service features, testimonials
+5. **Visual Assets** - Client logos, UI mockups
 
-## Deploy on Vercel
+## 🎯 Conversion Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Single Primary CTA** throughout the page
+- **Urgency Indicators** (limited slots, timeline)
+- **Social Proof** (metrics, logos, testimonials)
+- **Risk Reversal** (90-Day Payback Guarantee)
+- **Interactive Calculator** for rev-share model
+- **Comparison Table** vs traditional agencies
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 Performance Optimizations
+
+- Font loading with `font-display: swap`
+- Minimal DOM structure
+- CSS animations ≤ 150ms
+- No parallax on mobile
+- Glassmorphism used sparingly
+- WCAG 2.2 AA compliant
+
+## 📦 Deployment
+
+Ready for deployment on Vercel:
+
+```bash
+vercel
+```
+
+## 🤝 Brand Guidelines
+
+Refer to:
+- `/cursor-rules/brand-guideliness.mdc`
+- `/cursor-rules/sovira-styling-conventions.mdc`
+
+## 📧 Contact
+
+For questions about this landing page:
+- Email: sprint@sovira.digital
+- Website: https://sovira.digital

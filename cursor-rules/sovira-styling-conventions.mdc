@@ -1,0 +1,81 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Sovira Digital – Styling Conventions (v2 · May 2025)
+
+This style guide implements Sovira Digital’s **2025 Brand Guidelines**.  
+Apply these conventions across all repositories—Shopify theme, headless front‑ends, documentation—so every touchpoint feels coherent.
+
+---
+
+## Color System
+
+### Palette tokens
+
+| Token | Tailwind class | Hex |
+|-------|---------------|-----|
+| **Black** | `sovira-black` | `#111111` |
+| **Graphite** (UI surfaces) | `sovira-graphite` | `#2F2F2F` |
+| **Paper** (background) | `sovira-paper` | `#F4F4F4` |
+| **Chartreuse** (accent) | `sovira-chartreuse` | `#C6FF00` |
+
+### Usage guidelines
+- Declare the palette once in **`tailwind.config.ts`** under `theme.extend.colors`.
+- Use `bg-sovira-*`, `text-sovira-*`, `border-sovira-*`; opacity variants are generated automatically (`/50`, `/70`, etc.).
+- Maintain **WCAG AA (4.5 : 1)** contrast; prefer `text-sovira-paper` on dark surfaces.
+- Gradients  
+  - Accent → Black: `bg-sovira-gradient-accent` (`from-sovira-chartreuse via-transparent to-sovira-black`)  
+  - Graphite overlay: `bg-sovira-gradient-dark`
+
+---
+
+## Typography
+
+| Context | Tailwind class | Font | Size / Tracking |
+|---------|---------------|------|-----------------|
+| Display H1 | `text-h1` | **Neue Haas Grotesk Display** | 96 px / –1 % |
+| H2 | `text-h2` | Neue Haas Grotesk Display | 72 px / –0.5 % |
+| H3 | `text-h3` | Neue Haas Grotesk Display | 48 px / 0 |
+| Body | `text-body` | **Suisse Int’l · system‑ui fallback** | 16 px / +2 % |
+| Caption | `text-caption` | Suisse Int’l | 14 px / +4 % |
+| Serif accent | `text-accent` | **Spectral Italic** | contextual |
+
+- Font imports live in **`app/globals.css`** (`@font-face` with `font-display: swap`).
+- Never mix Inter and Neue Haas—migrate any legacy components.
+
+---
+
+## Spacing & Layout
+- Follow an **8‑px soft grid** (`p-2`, `p-4`, `my-8`, etc.).
+- Sections: `container mx-auto px-4 md:px-8 lg:px-12 max-w-screen-xl`.
+- Prefer **CSS Grid** first (`grid-cols-12 gap-6`); use FlexBox only for simple linear stacks.
+- Generous whitespace: `my-20` between hero sections, `my-14` for standard blocks.
+
+---
+
+## Motion & UI Effects
+- **Easing:** `ease-out` with total **≤ 150 ms**.
+
+    ```html
+    transition-[opacity,transform] duration-150 ease-out
+    ```
+
+- **Glassmorphism:** `backdrop-blur-md bg-sovira-paper/30 shadow-glass max-w-md`.
+- **Mobile:** disable parallax (`md:translate-y-0`).
+- **Interactive states**
+  - Links & CTAs: `hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0`.
+  - Form fields: 2‑px rounded outline `focus-visible:ring-2 focus-visible:ring-sovira-chartreuse/60`.
+
+---
+
+## Component Structure
+- All section primitives reside in **`/components`**; follow `SectionName.*` pattern.
+- Collocate style hooks in `SectionName.styles.ts` to keep `.tsx` lean.
+- Reference canonical example in **`components/HeroSection.tsx`**.
+
+---
+
+_Last updated 2025‑05‑28 • Maintainer: Design Ops_

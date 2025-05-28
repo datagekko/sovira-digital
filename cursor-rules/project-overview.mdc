@@ -1,0 +1,107 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Sovira Digital · Landing Page Project Overview (2025‑Q2 Refresh)
+
+## 1. Purpose
+
+Deliver a **high‑converting, brand‑perfect landing page** that brings Sovira’s sharpened 2025 offer (Brand‑Ready Sprint & Rev‑Share Accelerator) to life. The page must move momentum fashion & wellness brands (≈ €1‑1.5 M ARR) from interest → booked call in under 60 s.
+
+---
+
+## 2. Architecture (Next.js 14 **app/** router)
+
+```
+app/
+  layout.tsx          // root html + meta + fonts
+  page.tsx            // imports all sections (atomic)
+  globals.css         // base styles, CSS vars, font‑faces
+components/
+  HeroSection.tsx
+  ProofSection.tsx
+  Offer/
+    BrandReadySprint.tsx
+    RevShareAccelerator.tsx
+    OfferComparison.tsx
+    GuaranteeBadge.tsx
+  ServicesSection.tsx
+  TestimonialsSection.tsx
+  CtaSection.tsx
+  Footer.tsx
+lib/
+  constants.ts        // palette, breakpoints, copies
+public/
+  /images             // editorial, ui mockups
+  /logos              // client logos, Sovira mark
+```
+
+*// reasoning: modular folders mirror Sovira’s “launch fast, iterate” ethos & enable tree‑shaking.*
+
+---
+
+## 3. Key Sections & Conversion Hooks
+
+| Section          | Core Goal                  | Persuasion Elements                                                                        |
+| ---------------- | -------------------------- | ------------------------------------------------------------------------------------------ |
+| **Hero**         | Instant clarity & intrigue | Hook (Variable 3) · Primary CTA (Variable 1) · 14‑Day badge                                |
+| **Proof**        | Trust                      | Client logos (≤ 6) · metrics badges                                                        |
+| **Offer Module** | Present paths to value     | **Brand‑Ready Sprint** tiers · **Rev‑Share Accelerator** explainer & quick‑math slide‑over |
+| **Comparison**   | Objection handling         | Table: Traditional Agency vs Sovira (price, timeline, guarantee)                           |
+| **Guarantee**    | Risk reversal              | 90‑Day Payback Pledge badge                                                                |
+| **Services**     | Depth                      | Bullet benefits, tool stack (AI, Shopify+, Klaviyo)                                        |
+| **Testimonials** | Social proof               | 2‑3 video quotes, pull quotes                                                              |
+| **CTA**          | Close                      | Single CTA, urgency microcopy                                                              |
+| **Footer**       | Credibility                | Contact, privacy, minimal nav                                                              |
+
+---
+
+## 4. Tech Stack
+
+* **Next.js 14** (file‑system routing, streaming)
+* **TypeScript** for safety
+* **Tailwind CSS** with custom theme (see *tailwind.config.ts*)
+* **Framer Motion** (micro animations ≤ 150 ms)
+* **Lucide‑React**, **shadcn/ui** components
+
+---
+
+## 5. Brand System (2025 Update)
+
+| Trait          | Spec                                                                                              |
+| -------------- | ------------------------------------------------------------------------------------------------- |
+| **Voice**      | Confident, minimal, performance‑obsessed                                                          |
+| **Palette**    | `#111111` base · `#F4F4F4` bg · `#2F2F2F` ink‑gray · `#C6FF00` accent (≤ 5 %) · `#9B9B9B` neutral |
+| **Typography** | Neue Haas Grotesk (700,400) · Spectral Italic accent                                              |
+| **UI Motifs**  | Glassmorphic cards (blur‑12, rgba‑white‑8 %) · soft gradient overlays · large whitespace          |
+| **Imagery**    | Editorial fashion / wellness photography, subtle grain                                            |
+
+Reference docs in Cursor:
+
+* `sovira-brand-guidelines.mdc`
+* `brand-guideliness.mdc`
+* `sovira-styling-conventions.mdc`
+* **PDF Assets:** `BRANDING GUIDELINE.pdf`, `OFFER.pdf`
+
+---
+
+## 6. Variables for Customisation
+
+1. **Primary CTA Text** – “Book Discovery Call”, “Launch My Store”, …
+2. **Client Personas Served** – e.g. “streetwear founder”, “wellness DTC team”
+3. **Headline Hook / Emotional Angle** – e.g. “Your brand deserves more than a theme”
+4. **Section Content Inputs** – features, testimonials, story copy
+5. **Preferred Visuals / Imagery Direction** – UI mockups, editorials
+
+---
+
+## 7. Milestones
+
+1. **Scaffold** app/\*\* + globals.css (Day 1)
+2. **Implement** Hero → Offer modules (Day 3)
+3. **Integrate** motion & responsive polish (Day 5)
+4. **Lighthouse ≥ 95 / LCP ≤ 2.5 s** (Day 6)
+5. **Client QA & copy swap** (Day 7)
+
+> **Outcome:** Production‑ready landing page, pushing **< 14 days** promise at both code & brand level.
