@@ -32,11 +32,6 @@ export default function ComparisonTable() {
       sovira: 'AI-enhanced, clean',
     },
     {
-      feature: 'Page Speed',
-      traditional: '4-6s average',
-      sovira: '< 2.5s LCP',
-    },
-    {
       feature: 'Post-Launch Support',
       traditional: 'Extra fees',
       sovira: '90 days included',
