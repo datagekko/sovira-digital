@@ -1,0 +1,293 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Sovira Digital - Developer Onboarding Guide
+
+Welcome to the Sovira Digital landing page project! This guide will get you up to speed quickly with our conversion-optimized Next.js landing page.
+
+## 🎯 Project Overview
+
+**Sovira Digital** is a premium Shopify consultancy targeting momentum fashion & wellness brands generating €1-1.5M annually. Our landing page showcases fast (≤14 days), beautiful, high-converting Shopify storefronts with a 90-Day Payback Guarantee.
+
+### Key Value Propositions
+- **Speed**: Launch in 14 days or less
+- **Quality**: Premium design with luxury-grade aesthetics  
+- **Performance**: LCP < 2.5s, optimized for conversions
+- **Guarantee**: 90-Day Payback Performance Pledge
+
+## 🏗️ Architecture Overview
+
+### Tech Stack
+- **Framework**: Next.js 14 with App Directory
+- **Styling**: Tailwind CSS v3 (downgraded from v4 for stability)
+- **Language**: TypeScript
+- **Deployment**: Ready for Vercel
+- **Repository**: https://github.com/datagekko/sovira-digital
+
+### Component Structure
+```
+components/
+├── Header.tsx              # Navigation with grid icon + CTA
+├── HeroSection.tsx         # Main hero with chartreuse glow effects
+├── ProofSection.tsx        # Social proof and metrics
+├── BrandReadySprint.tsx    # Pricing tiers (Standard/Fast-Track/Super-Rush)
+├── RevShareAccelerator.tsx # Performance-based pricing model
+├── ComparisonTable.tsx     # Traditional vs Sovira comparison
+├── CTASection.tsx         # Final conversion section
+└── Footer.tsx             # Brand-consistent footer
+```
+
+## 🎨 Brand System Integration
+
+### Color Palette
+```typescript
+// Tailwind Config Colors
+'sovira-black': '#111111',     // Primary text and buttons
+'sovira-graphite': '#2F2F2F',  // UI surfaces and secondary text
+'sovira-paper': '#F4F4F4',     // Background color
+'sovira-chartreuse': '#C6FF00', // Accent color (≤5% usage)
+'sovira-neutral': '#9B9B9B',   // Neutral text and icons
+```
+
+### Typography System
+- **Display Headlines**: Neue Haas Grotesk Display (H1: 96px, H2: 72px, H3: 48px)
+- **Body Text**: Suisse Int'l with system-ui fallback
+- **Accent Text**: Spectral Italic for taglines and emphasis
+
+### Design Principles
+- **Glassmorphism**: Frosted-glass cards with backdrop-blur-md
+- **Motion**: Sub-150ms ease-out transitions
+- **Iconography**: Thin-line icons, 2px stroke, rounded joins
+- **Spacing**: 8px soft grid system
+
+## 🚀 Quick Start
+
+### 1. Environment Setup
+```bash
+# Clone the repository
+git clone https://github.com/datagekko/sovira-digital.git
+cd sovira-digital
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+### 2. Development Server
+- **Local**: http://localhost:3000
+- **Network**: http://192.168.0.131:3000 (for testing on devices)
+
+### 3. Key Commands
+```bash
+npm run dev          # Start development server with Turbopack
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+```
+
+## 📝 Development History & Changes Made
+
+### Phase 1: Project Foundation
+**What we built:**
+- ✅ Initialized Next.js 14 project with TypeScript
+- ✅ Configured Tailwind CSS v3 with Sovira brand tokens
+- ✅ Set up proper font configuration and fallbacks
+- ✅ Created component architecture following modular design
+
+**Technical decisions:**
+- **Tailwind v3 over v4**: Downgraded for stability after v4 compatibility issues
+- **Server-side components**: Removed 'use client' to eliminate hydration errors
+- **PostCSS configuration**: Fixed for v3 compatibility
+
+### Phase 2: Brand Implementation
+**What we built:**
+- ✅ Header component with 3x3 grid icon and glassmorphism
+- ✅ Hero section with chartreuse glow effects on "14 days"
+- ✅ Complete conversion funnel: Hero → Proof → Offers → Comparison → CTA
+
+**Design system implementation:**
+- **Colors**: All brand colors as Tailwind tokens
+- **Typography**: Neue Haas, Spectral, and Suisse Int'l integration
+- **Glassmorphism**: Consistent backdrop-blur effects
+- **Animations**: Smooth hover states and micro-interactions
+
+### Phase 3: Conversion Optimization
+**What we built:**
+- ✅ Two pricing paths: Brand-Ready Sprint + Rev-Share Accelerator
+- ✅ Social proof section with metrics (€2.4M+ generated, 14 days average)
+- ✅ Comparison table highlighting advantages over traditional agencies
+- ✅ Trust indicators and 90-Day Payback Guarantee messaging
+
+**UX/Conversion features:**
+- **Primary CTA**: "Book Free Discover Call" prominently placed
+- **Social proof**: Client metrics and testimonials
+- **Risk reversal**: 90-Day Payback Guarantee throughout
+- **Urgency**: "Only 2 sprint slots left this month"
+
+### Phase 4: Polish & Performance
+**What we fixed:**
+- ✅ Responsive design for all screen sizes
+- ✅ Scroll indicator positioning (no overlap issues)
+- ✅ Typography hierarchy and text flow
+- ✅ Performance optimization with server-side rendering
+
+## 🔧 Component Deep Dive
+
+### Header Component
+```typescript
+// Location: components/Header.tsx
+// Features: Grid icon, SOVIRA wordmark, glassmorphism, CTA button
+// Styling: backdrop-blur-md, z-50 for proper layering
+```
+
+**Key features:**
+- 3x3 grid SVG icon following brand iconography guidelines
+- Glassmorphism header with paper-toned transparency
+- Responsive CTA button with hover animations
+
+### HeroSection Component
+```typescript
+// Location: components/HeroSection.tsx  
+// Features: Chartreuse glow, responsive typography, trust indicators
+// Styling: Multi-layered glow effects, proper z-index management
+```
+
+**Key features:**
+- Strong chartreuse glow on "14 days" with three blur layers
+- Responsive typography that scales from mobile to desktop
+- Trust indicators with checkmarks and social proof
+
+### Pricing Components
+**BrandReadySprint.tsx:**
+- Three tiers: Standard (€9,900), Fast-Track (€12,900), Super-Rush (€15,900)
+- "MOST POPULAR" badge on Fast-Track tier
+- Consistent 90-Day Payback Guarantee messaging
+
+**RevShareAccelerator.tsx:**
+- Performance-based model: €1,500 base + 20% revenue share
+- Interactive calculator showing profit split
+- Risk mitigation with 6-month terms and kill-switch
+
+## 🎛️ Configuration Files
+
+### Tailwind Config (`tailwind.config.ts`)
+```typescript
+// Brand colors, typography scale, custom shadows, animations
+// Glassmorphism utilities, chartreuse glow effects
+// Responsive breakpoints and spacing system
+```
+
+### PostCSS Config (`postcss.config.mjs`)
+```javascript
+// Tailwind CSS v3 compatibility
+// Autoprefixer for browser compatibility
+```
+
+### Next.js Config (`next.config.ts`)
+```typescript
+// Standard Next.js 14 configuration
+// Optimized for Vercel deployment
+```
+
+## 🐛 Common Issues & Solutions
+
+### Font Loading Issues
+**Problem**: 404 errors for font files (NeueHaasDisplay-Bold.woff2, Spectral-Italic.woff2)
+**Status**: Non-blocking - fallback fonts work correctly
+**Solution**: Add actual font files to `/public/fonts/` directory when available
+
+### Hydration Errors
+**Problem**: Server/client HTML mismatch
+**Solution**: ✅ **SOLVED** - Removed 'use client' directives, using server-side components
+
+### Styling Issues
+**Problem**: Black/white appearance, misaligned elements
+**Solution**: ✅ **SOLVED** - Downgraded to Tailwind CSS v3, fixed PostCSS config
+
+### Scroll Indicator Overlap
+**Problem**: Mouse indicator overlapping with trust indicators
+**Solution**: ✅ **SOLVED** - Moved outside content container, added bottom margin
+
+## 🚢 Deployment Guide
+
+### Vercel Deployment
+1. **Connect Repository**: Link GitHub repo to Vercel
+2. **Configure Domain**: Set up sovira.digital custom domain
+3. **Environment Variables**: Add any needed env vars
+4. **Deploy**: Automatic deployments from main branch
+
+### Pre-deployment Checklist
+- [ ] All components render correctly
+- [ ] Responsive design tested on multiple devices
+- [ ] Font fallbacks working
+- [ ] Performance metrics acceptable (LCP < 2.5s)
+- [ ] All CTAs functional
+- [ ] Brand guidelines followed
+
+## 📋 Development Workflow
+
+### Branch Strategy
+- `main`: Production-ready code (auto-deploy to production)
+- `develop`: Integration branch for ongoing development
+- Feature branches: `feat/component-name` for specific features
+
+### Code Standards
+- **TypeScript**: Strict mode enabled
+- **Components**: Functional components with TypeScript
+- **Styling**: Tailwind CSS classes, no custom CSS
+- **Naming**: PascalCase for components, kebab-case for files
+
+### Testing Guidelines
+1. **Visual Testing**: Check on desktop, tablet, mobile
+2. **Performance**: Monitor LCP, CLS, FID metrics
+3. **Accessibility**: Ensure WCAG 2.2 AA compliance
+4. **Cross-browser**: Test Chrome, Safari, Firefox, Edge
+
+## 🎯 Conversion Optimization Features
+
+### Psychological Triggers
+- **Speed emphasis**: "14 days" prominently highlighted
+- **Social proof**: "€2.4M+ generated", "€1M+ brands trust us"
+- **Risk reversal**: 90-Day Payback Guarantee
+- **Scarcity**: "Only 2 sprint slots left this month"
+- **Authority**: Comparison table showing advantages
+
+### Call-to-Action Hierarchy
+1. **Primary**: "Book Free Discover Call" (header + hero)
+2. **Secondary**: "See our work" (lower commitment)
+3. **Alternative**: Contact options (email, WhatsApp, phone)
+
+### Performance Optimizations
+- Server-side rendering for fast initial load
+- Optimized images and assets
+- Minimal JavaScript bundle
+- Font display: swap for faster text rendering
+
+## 🔍 Brand Guidelines Reference
+
+For detailed brand guidelines, see:
+- `cursor-rules/brand-guideliness.mdc`
+- `cursor-rules/sovira-styling-conventions.mdc`
+- `cursor-rules/autonomous_riper_workflow.mdc`
+
+### Key Brand Principles
+- **Speed > Polish**: Ship fast, refine post-launch
+- **Clarity > Complexity**: Founders need answers, not jargon
+- **Evidence > Instinct**: Test, then trust
+- **Empathy > Ego**: Mentor, don't lecture
+
+## 📞 Support & Contact
+
+**Repository**: https://github.com/datagekko/sovira-digital
+**Issues**: Use GitHub Issues for bug reports and feature requests
+**Discussions**: GitHub Discussions for questions and ideas
+
+---
+
+**Welcome to the team!** This documentation should give you everything you need to start contributing effectively. When in doubt, refer to the brand guidelines and don't hesitate to ask questions.
+
+*Last updated: January 2025*

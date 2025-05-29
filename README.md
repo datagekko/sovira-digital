@@ -1,109 +1,85 @@
-# Sovira Digital Landing Page
+# Sovira Digital - Premium Shopify Landing Page
 
-A high-converting landing page for Sovira Digital - the premier Shopify consultancy for momentum fashion & wellness brands turning €1-1.5M annually.
+Premium Shopify landing page for Sovira Digital - targeting momentum fashion & wellness brands with fast (≤14 days), beautiful, high-converting storefronts.
 
-## 🚀 Tech Stack
+## 🚀 Quick Start
 
-- **Framework:** Next.js 14 (App Router)
-- **Styling:** Tailwind CSS
-- **Typography:** Neue Haas Grotesk Display, Spectral, Suisse Int'l
-- **Deployment:** Optimized for Vercel
-
-## 🎨 Design System
-
-### Brand Colors
-- `sovira-black`: #111111
-- `sovira-graphite`: #2F2F2F  
-- `sovira-paper`: #F4F4F4
-- `sovira-chartreuse`: #C6FF00 (accent, ≤5% usage)
-- `sovira-neutral`: #9B9B9B
-
-### Typography Scale
-- H1: 96px (Neue Haas)
-- H2: 72px (Neue Haas)
-- H3: 48px (Neue Haas)
-- Body: 16px (Suisse Int'l)
-- Accent: Spectral Italic
-
-## 📁 Project Structure
-
-```
-sovira/
-├── app/
-│   ├── globals.css      # Global styles & font imports
-│   ├── layout.tsx       # Root layout with metadata
-│   └── page.tsx         # Landing page composition
-├── components/
-│   ├── HeroSection.tsx      # Hero with primary CTA
-│   ├── ProofSection.tsx     # Social proof & metrics
-│   ├── BrandReadySprint.tsx # Sprint pricing tiers
-│   ├── RevShareAccelerator.tsx # Rev-share model
-│   ├── ComparisonTable.tsx  # Agency comparison
-│   ├── CTASection.tsx       # Final conversion push
-│   └── Footer.tsx           # Minimal footer
-├── public/
-│   └── fonts/              # Custom font files
-└── tailwind.config.ts      # Tailwind configuration
-```
-
-## 🚦 Getting Started
-
-1. Install dependencies:
 ```bash
+git clone https://github.com/datagekko/sovira-digital.git
+cd sovira-digital
 npm install
-```
-
-2. Run development server:
-```bash
 npm run dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000)
+Visit http://localhost:3000 to see the landing page.
 
-## 📝 Content Variables
+## 📚 Documentation
 
-The landing page supports these customizable variables:
+### For New Developers
+- **📖 [Developer Onboarding Guide](cursor-rules/developer-onboarding.mdc)** - Complete guide for new team members
+- **⚡ [Quick Reference](cursor-rules/quick-reference.mdc)** - Cheat sheet for immediate development needs
 
-1. **Primary CTA Text** - Default: "Book Discovery Call"
-2. **Client Personas** - Default: "fashion & wellness brands"
-3. **Headline Hook** - Default: "Launch in 14 days"
-4. **Section Content** - Service features, testimonials
-5. **Visual Assets** - Client logos, UI mockups
+### Brand & Design Guidelines  
+- **🎨 [Brand Guidelines](cursor-rules/brand-guideliness.mdc)** - Complete brand system and voice
+- **🎛️ [Styling Conventions](cursor-rules/sovira-styling-conventions.mdc)** - Tailwind CSS conventions and design tokens
+- **🔄 [RIPER Workflow](cursor-rules/autonomous_riper_workflow.mdc)** - Our autonomous development methodology
 
-## 🎯 Conversion Features
+### Technical Specifications
+- **🔧 [GitHub Workflow](cursor-rules/github-workflow.mdc)** - Git branching and deployment process
+- **📋 [Project Overview](cursor-rules/project-overview.mdc)** - High-level project context
 
-- **Single Primary CTA** throughout the page
-- **Urgency Indicators** (limited slots, timeline)
-- **Social Proof** (metrics, logos, testimonials)
-- **Risk Reversal** (90-Day Payback Guarantee)
-- **Interactive Calculator** for rev-share model
-- **Comparison Table** vs traditional agencies
+## 🏗️ Architecture
 
-## 🔧 Performance Optimizations
+**Tech Stack:**
+- Next.js 14 with App Directory
+- Tailwind CSS v3 (stable)
+- TypeScript
+- Server-side rendering for performance
 
-- Font loading with `font-display: swap`
-- Minimal DOM structure
-- CSS animations ≤ 150ms
-- No parallax on mobile
-- Glassmorphism used sparingly
-- WCAG 2.2 AA compliant
+**Key Features:**
+- ✅ Conversion-optimized landing page
+- ✅ Glassmorphism design system
+- ✅ Brand-consistent components
+- ✅ 90-Day Payback Guarantee messaging
+- ✅ Responsive design (mobile-first)
+- ✅ Performance optimized (LCP < 2.5s target)
 
-## 📦 Deployment
+## 🎯 Brand Overview
 
-Ready for deployment on Vercel:
+**Target Audience:** Momentum fashion & wellness brands generating €1-1.5M annually
+
+**Value Propositions:**
+- **Speed**: Launch in 14 days or less
+- **Quality**: Premium design with luxury-grade aesthetics
+- **Performance**: LCP < 2.5s, optimized for conversions  
+- **Guarantee**: 90-Day Payback Performance Pledge
+
+## 🔧 Development Commands
 
 ```bash
-vercel
+npm run dev          # Start development server with Turbopack
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
 ```
 
-## 🤝 Brand Guidelines
+## 🚢 Deployment
 
-Refer to:
-- `/cursor-rules/brand-guideliness.mdc`
-- `/cursor-rules/sovira-styling-conventions.mdc`
+Ready for deployment on Vercel with automatic deployments from the `main` branch.
 
-## 📧 Contact
+**Production URL:** TBD (connect custom domain: sovira.digital)
 
-For questions about this landing page:
-- Email: sprint@sovira.digital
-- Website: https://sovira.digital
+## 📝 Recent Changes
+
+- ✅ Complete header with grid icon and glassmorphism
+- ✅ Hero section with chartreuse glow effects
+- ✅ Full conversion funnel implementation
+- ✅ Responsive design optimization
+- ✅ Performance improvements with SSR
+- ✅ Comprehensive documentation system
+
+---
+
+**Need help?** Check the [Developer Onboarding Guide](cursor-rules/developer-onboarding.mdc) for detailed instructions, or the [Quick Reference](cursor-rules/quick-reference.mdc) for immediate answers.
+
+*Built with the RIPER workflow methodology - Fast. Beautiful. Built to Convert.*
