@@ -14,14 +14,13 @@ export default function BrandReadySprint() {
       name: 'Standard',
       timeline: '≤ 30 days',
       price: '€9,900',
-      slots: '4 slots/month',
       features: [
         'Custom Shopify 2.0 theme',
         'AI-assisted copywriting',
         'Mobile-first design',
         '90-day conversion monitoring',
-        '12 email/SMS flows',
-        'Founders\' Slack hotline',
+        '5 email/SMS flows (Abandoned Cart, Welcome Email, Upselling Flow, Brand Order Confirmation, Transactional Emails)',
+        'Founders\' WhatsApp hotline',
       ],
     },
     {
@@ -29,15 +28,12 @@ export default function BrandReadySprint() {
       name: 'Fast-Track',
       timeline: '≤ 14 days',
       price: '€12,900',
-      slots: '2 slots/month',
       popular: true,
       features: [
         'Everything in Standard',
+        '14-day development timeline',
         'Priority development queue',
-        'Daily progress updates',
         'Advanced performance optimization',
-        'Custom checkout experience',
-        'Launch week support',
       ],
     },
     {
@@ -45,14 +41,10 @@ export default function BrandReadySprint() {
       name: 'Super-Rush',
       timeline: '≤ 7 days',
       price: '€15,900',
-      slots: '1 slot/month',
       features: [
         'Everything in Fast-Track',
-        'Dedicated senior team',
-        '24/7 development cycle',
+        '7-day development timeline',
         'White-glove onboarding',
-        'Post-launch optimization sprint',
-        'Executive strategy session',
       ],
     },
   ];
@@ -108,15 +100,12 @@ export default function BrandReadySprint() {
                 <div className="text-4xl font-neue-haas font-bold mb-2">
                   {tier.price}
                 </div>
-                <p className={`text-sm ${tier.popular ? 'text-sovira-neutral' : 'text-sovira-paper/70'}`}>
-                  {tier.slots}
-                </p>
               </div>
 
               <ul className="space-y-3 mb-8">
                 {tier.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-2">
-                    <span className="text-sovira-chartreuse mt-0.5">✓</span>
+                    <span className={`mt-0.5 ${tier.popular ? 'text-sovira-chartreuse-readable' : 'text-sovira-chartreuse'}`}>✓</span>
                     <span className={`text-sm ${tier.popular ? 'text-sovira-graphite' : 'text-sovira-paper/90'}`}>
                       {feature}
                     </span>
