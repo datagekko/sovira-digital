@@ -7,7 +7,7 @@ Premium Shopify landing page for Sovira Digital - targeting momentum fashion & w
 ```bash
 git clone https://github.com/datagekko/sovira-digital.git
 cd sovira-digital
-npm install
+./quick-setup.sh
 npm run dev
 ```
 
