@@ -10,12 +10,10 @@ export default function ProofSection() {
   ];
 
   const clientLogos = [
-    { name: 'Brand 1', placeholder: true },
-    { name: 'Brand 2', placeholder: true },
-    { name: 'Brand 3', placeholder: true },
-    { name: 'Brand 4', placeholder: true },
-    { name: 'Brand 5', placeholder: true },
-    { name: 'Brand 6', placeholder: true },
+    { name: 'LIFTERS', logo: '/logos/Lifters Logo black.png', placeholder: false },
+    { name: 'PERPLEX', logo: '/logos/PERPLEX-LOGO-SCHUTZRAUM-BLACK.png', placeholder: false },
+    { name: 'BRUN', logo: '/logos/LOGO_BRUN.png', placeholder: false },
+    { name: 'Your Brand', logo: '/logos/your-logo-placeholder.svg', placeholder: true },
   ];
 
   return (
@@ -46,9 +44,9 @@ export default function ProofSection() {
               key={index}
               className="text-center group hover:scale-105 transition-transform duration-150"
             >
-              <div className="text-3xl md:text-4xl font-neue-haas font-bold text-sovira-black mb-2">
-                {metric.value}
-                <span className="text-sovira-chartreuse">{metric.suffix}</span>
+              <div className="text-3xl md:text-4xl font-neue-haas font-bold mb-2">
+                <span className="text-sovira-chartreuse-readable">{metric.value}</span>
+                <span className="text-sovira-black">{metric.suffix}</span>
               </div>
               <p className="text-sovira-neutral text-sm">{metric.label}</p>
             </div>
@@ -64,18 +62,26 @@ export default function ProofSection() {
           </div>
 
           {/* Logo grid with glassmorphism cards */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {clientLogos.map((logo, index) => (
               <div
                 key={index}
                 className="glass backdrop-blur-glass bg-sovira-paper/30 rounded-sm p-6 flex items-center justify-center h-24 hover:bg-sovira-paper/50 transition-all duration-150"
               >
-                {/* Placeholder for actual logos */}
-                <div className="w-full h-full bg-sovira-neutral/10 rounded-sm flex items-center justify-center">
-                  <span className="text-sovira-neutral text-xs">
-                    {logo.name}
-                  </span>
-                </div>
+                {/* Actual logos or placeholders */}
+                {logo.logo ? (
+                  <img 
+                    src={logo.logo} 
+                    alt={logo.name}
+                    className="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-sovira-neutral/10 rounded-sm flex items-center justify-center">
+                    <span className="text-sovira-neutral text-xs">
+                      {logo.name}
+                    </span>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -90,12 +96,12 @@ export default function ProofSection() {
         <div className="mt-20 max-w-3xl mx-auto">
           <div className="glass backdrop-blur-glass bg-sovira-paper/30 rounded-sm p-8 md:p-12 text-center">
             <blockquote className="text-xl md:text-2xl text-sovira-graphite mb-6">
-              "Sovira delivered our new store in <span className="text-sovira-chartreuse font-bold">12 days</span>. 
+              "Sovira delivered our new store in <span className="text-sovira-chartreuse-readable font-bold">12 days</span>. 
               Our conversion rate jumped 47% in the first month."
             </blockquote>
             <cite className="text-sovira-neutral not-italic">
-              <span className="font-medium text-sovira-black">Sarah Chen</span>
-              <span className="block text-sm mt-1">Founder, [Wellness Brand]</span>
+              <span className="font-medium text-sovira-black">Helen Erichsen</span>
+              <span className="block text-sm mt-1">Founder, RAVE Yoga</span>
             </cite>
           </div>
         </div>

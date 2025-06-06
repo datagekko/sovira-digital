@@ -1,5 +1,88 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
+# Sovira Digital - Quick Reference
+
+**Need to get started fast?** This is your cheat sheet.
+
+## 🚀 30-Second Setup
+```bash
+git clone https://github.com/datagekko/sovira-digital.git
+cd sovira-digital
+npm install
+npm run dev
+# Open http://localhost:3000
+```
+
+## 🎨 Brand Colors (Copy-Paste Ready)
+```typescript
+'sovira-black': '#111111',      // Use for: Primary text, buttons
+'sovira-graphite': '#2F2F2F',   // Use for: Secondary text, surfaces
+'sovira-paper': '#F4F4F4',      // Use for: Backgrounds
+'sovira-chartreuse': '#C6FF00', // Use for: Accents (≤5% of design)
+'sovira-chartreuse-readable': '#6564DB', // Use for: Text on white backgrounds
+'sovira-neutral': '#9B9B9B',    // Use for: Subtle text, icons
+```
+
+### Color Usage Guide
+- **Glow effects & dark backgrounds**: Use `sovira-chartreuse`
+- **Text & icons on white**: Use `sovira-chartreuse-readable`  
+- **Background elements**: Use `sovira-chartreuse`
+
+## 📁 Component Map
+- **Header**: `components/Header.tsx` - Grid icon + CTA
+- **Hero**: `components/HeroSection.tsx` - Main headline with glow
+- **Proof**: `components/ProofSection.tsx` - Metrics + testimonials
+- **Pricing**: `components/BrandReadySprint.tsx` - 3-tier pricing
+- **Revenue**: `components/RevShareAccelerator.tsx` - Performance model
+- **Compare**: `components/ComparisonTable.tsx` - Traditional vs Sovira
+- **CTA**: `components/CTASection.tsx` - Final conversion push
+- **Footer**: `components/Footer.tsx` - Links + copyright
+
+## 🔧 Common Fixes
+
+### Font 404 Errors
+**Problem**: `GET /fonts/NeueHaasDisplay-Bold.woff2 404`
+**Fix**: Ignore - fallback fonts work. Add real fonts to `/public/fonts/` when available.
+
+### Styling Broken
+**Problem**: Elements look wrong
+**Fix**: Check Tailwind classes, ensure `postcss.config.mjs` is correct for v3.
+
+### Responsive Issues
+**Problem**: Mobile/desktop layout problems
+**Fix**: Use `md:` prefixes. Check `max-w-3xl mx-auto` containers.
+
+## 🎯 Brand Guidelines TL;DR
+- **Typography**: Neue Haas Display for headlines, Suisse Int'l for body
+- **Spacing**: Use 8px grid (`p-2`, `p-4`, `p-8`, etc.)
+- **Motion**: Max 150ms transitions with `ease-out`
+- **Glassmorphism**: `backdrop-blur-md bg-sovira-paper/80`
+- **CTAs**: Always include arrow `→` with hover animation
+
+## 📱 Testing Checklist
+```
+□ Desktop (1920px+)
+□ Tablet (768px-1024px)  
+□ Mobile (375px-768px)
+□ All CTAs clickable
+□ Scroll indicator not overlapping
+□ Fonts loading with fallbacks
+□ Chartreuse glow visible on "14 days"
+```
+
+## 🔗 Key Links
+- **Live Site**: http://localhost:3000 (dev)
+- **GitHub**: https://github.com/datagekko/sovira-digital
+- **Docs**: `cursor-rules/developer-onboarding.mdc` (full guide)
+- **Brand**: `cursor-rules/brand-guideliness.mdc`
+
+## ⚡ Emergency Contacts
+- **Repository Issues**: GitHub Issues tab
+- **Brand Questions**: See `brand-guideliness.mdc`
+- **Technical Problems**: Check `developer-onboarding.mdc` → Common Issues
+
+---
+*Updated: January 2025 | For full docs see: `developer-onboarding.mdc`*

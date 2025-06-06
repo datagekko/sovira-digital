@@ -48,6 +48,7 @@ components/
 'sovira-graphite': '#2F2F2F',  // UI surfaces and secondary text
 'sovira-paper': '#F4F4F4',     // Background color
 'sovira-chartreuse': '#C6FF00', // Accent color (≤5% usage)
+'sovira-chartreuse-readable': '#6564DB', // Readable accent for white backgrounds
 'sovira-neutral': '#9B9B9B',   // Neutral text and icons
 ```
 
@@ -135,6 +136,60 @@ npm run lint         # Run ESLint
 - ✅ Typography hierarchy and text flow
 - ✅ Performance optimization with server-side rendering
 
+### Phase 5: Client Logo Integration
+**What we built:**
+- ✅ Client logo asset management system in `/public/logos/`
+- ✅ Real client logos integration (LIFTERS, PERPLEX, BRUN)
+- ✅ "Your Brand" placeholder with compelling CTA messaging
+- ✅ Responsive 4-logo grid layout with glassmorphism cards
+
+**Asset implementation:**
+- **Logo storage**: `/public/logos/` directory for organized asset management
+- **File formats**: PNG for client logos, SVG for placeholder
+- **Optimization**: Grayscale filter with hover-to-color effect for engagement
+- **Responsive grid**: 2 columns mobile → 4 columns desktop
+
+**Visual design features:**
+- **Glassmorphism cards**: Consistent with brand system (backdrop-blur-glass)
+- **Interactive effects**: Grayscale to full-color on hover (300ms transition)
+- **Typography scaling**: "Your Brand" placeholder with prominent sizing
+- **Professional layout**: Centered 4-logo grid with proper spacing
+
+### Phase 6: Accessibility & Color Optimization
+**What we improved:**
+- ✅ Added `sovira-chartreuse-readable` (#6564DB) for better white background contrast
+- ✅ Implemented dual-color strategy maintaining brand identity while improving readability
+- ✅ Updated all text elements on white backgrounds to use readable variant
+- ✅ Preserved original chartreuse for glow effects and dark background elements
+- ✅ Enhanced metrics display with numbers highlighted in purple contrast color
+
+**Accessibility improvements:**
+- **WCAG compliance**: New color provides excellent contrast ratio on white backgrounds
+- **Dual-color strategy**: Original chartreuse for effects, readable purple for text
+- **Context-aware usage**: Conditional color application based on background
+- **Brand consistency**: Maintained visual identity while solving readability issues
+
+**Implementation strategy:**
+```typescript
+// ✅ Components affected by readable color update:
+// - CTASection: checkmarks, headlines, hover states
+// - HeroSection: trust indicator checkmarks
+// - ProofSection: metric numbers, testimonial highlights
+// - BrandReadySprint: checkmarks on white popular card
+// - RevShareAccelerator: section headers, calculator results
+
+// ✅ Components unchanged (dark backgrounds):
+// - ComparisonTable: chartreuse provides good contrast on black
+// - Footer: chartreuse appropriate for dark background
+// - All glow effects: maintained original brand chartreuse
+```
+
+**User experience improvements:**
+- **Better readability**: Text much easier to read on white sections
+- **Professional appearance**: Purple contrast creates sophisticated feel
+- **Maintained brand glow**: Original chartreuse preserved for signature effects
+- **Consistent hierarchy**: Numbers highlighted in purple vs. units in black
+
 ## 🔧 Component Deep Dive
 
 ### Header Component
@@ -171,6 +226,44 @@ npm run lint         # Run ESLint
 - Performance-based model: €1,500 base + 20% revenue share
 - Interactive calculator showing profit split
 - Risk mitigation with 6-month terms and kill-switch
+
+### ProofSection Component
+```typescript
+// Location: components/ProofSection.tsx
+// Features: Metrics display, client logos, testimonials
+// Styling: Glassmorphism cards, responsive grid, hover effects
+```
+
+**Key features:**
+- **Metrics showcase**: €2.4M+ revenue, 14 days launch time, 3.2% conversion rate
+- **Client logo grid**: 4-logo responsive layout (2 cols mobile → 4 cols desktop)
+- **Social proof messaging**: "Trusted by fashion & wellness brands turning €1M+ annually"
+- **Interactive testimonial**: Glassmorphism card with performance claims
+
+**Client logo implementation:**
+```typescript
+const clientLogos = [
+  { name: 'LIFTERS', logo: '/logos/Lifters Logo black.png', placeholder: false },
+  { name: 'PERPLEX', logo: '/logos/PERPLEX-LOGO-SCHUTZRAUM-BLACK.png', placeholder: false },
+  { name: 'BRUN', logo: '/logos/LOGO_BRUN.png', placeholder: false },
+  { name: 'Your Brand', logo: '/logos/your-logo-placeholder.svg', placeholder: true },
+];
+```
+
+**Logo display logic:**
+- PNG logos for actual clients with `object-contain` sizing
+- SVG placeholder for "Your Brand" slot with dashed border
+- Grayscale filter by default → full color on hover
+- Consistent card height (h-24) for uniform grid appearance
+
+**Asset organization:**
+```
+public/logos/
+├── Lifters Logo black.png          # Client logo (11KB)
+├── PERPLEX-LOGO-SCHUTZRAUM-BLACK.png # Client logo (21KB)
+├── LOGO_BRUN.png                   # Client logo (52KB)
+└── your-logo-placeholder.svg       # Custom placeholder (581B)
+```
 
 ## 🎛️ Configuration Files
 
@@ -211,6 +304,25 @@ npm run lint         # Run ESLint
 ### Scroll Indicator Overlap
 **Problem**: Mouse indicator overlapping with trust indicators
 **Solution**: ✅ **SOLVED** - Moved outside content container, added bottom margin
+
+### Logo Asset Management
+**Best practices for client logos:**
+- **File location**: Always store in `/public/logos/` directory
+- **File naming**: Use descriptive names matching brand (e.g., "Lifters Logo black.png")
+- **File formats**: PNG for photos/complex logos, SVG for simple graphics
+- **File sizes**: Optimize for web (typically 10-50KB for PNG logos)
+- **Responsive design**: Use `object-contain` class for consistent sizing
+
+**Adding new client logos:**
+1. Save logo file to `/public/logos/` directory
+2. Update `clientLogos` array in `components/ProofSection.tsx`
+3. Add logo object: `{ name: 'BRAND', logo: '/logos/filename.png', placeholder: false }`
+4. Test responsive display and hover effects
+
+**Placeholder customization:**
+- Edit `/public/logos/your-logo-placeholder.svg` for text changes
+- Adjust font sizes, colors, and border styling as needed
+- Maintain dashed border style for consistency
 
 ## 🚢 Deployment Guide
 

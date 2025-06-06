@@ -21,7 +21,7 @@ export default function CTASection() {
           {/* Main CTA headline */}
           <h2 className="font-neue-haas text-h3 md:text-h2 font-bold text-sovira-black mb-6">
             Your competition launches next week.
-            <span className="block text-sovira-chartreuse mt-2">What about you?</span>
+            <span className="block text-sovira-chartreuse-readable mt-2">What about you?</span>
           </h2>
 
           {/* Supporting copy */}
@@ -32,10 +32,15 @@ export default function CTASection() {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <button className="group px-8 py-4 bg-sovira-black text-sovira-paper font-neue-haas font-bold text-lg rounded-sm hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0 transition-all duration-150">
+            <a 
+              href="https://calendar.app.google/H2rgeWTpMBDyQzNE6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group px-8 py-4 bg-sovira-black text-sovira-paper font-neue-haas font-bold text-lg rounded-sm hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0 transition-all duration-150"
+            >
               Book Your Sprint Call
               <span className="inline-block ml-2 transition-transform duration-150 group-hover:translate-x-1">→</span>
-            </button>
+            </a>
             
             <a href="#offers" className="text-sovira-graphite hover:text-sovira-black underline underline-offset-4 font-medium">
               Compare packages
@@ -45,15 +50,15 @@ export default function CTASection() {
           {/* Trust reinforcement */}
           <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-sovira-neutral">
             <div className="flex items-center gap-2">
-              <span className="text-sovira-chartreuse">✓</span>
+              <span className="text-sovira-chartreuse-readable">✓</span>
               <span>90-Day Payback Guarantee</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-sovira-chartreuse">✓</span>
+              <span className="text-sovira-chartreuse-readable">✓</span>
               <span>No deposits required</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-sovira-chartreuse">✓</span>
+              <span className="text-sovira-chartreuse-readable">✓</span>
               <span>Cancel anytime</span>
             </div>
           </div>
@@ -62,15 +67,15 @@ export default function CTASection() {
           <div className="mt-16 pt-16 border-t border-sovira-neutral/20">
             <p className="text-sovira-neutral mb-4">Prefer to chat directly?</p>
             <div className="flex flex-wrap justify-center gap-6">
-              <a href="mailto:sprint@sovira.digital" className="text-sovira-black hover:text-sovira-chartreuse transition-colors">
+              <a href="mailto:sprint@sovira.digital" className="text-sovira-black hover:text-sovira-chartreuse-readable transition-colors">
                 sprint@sovira.digital
               </a>
               <span className="text-sovira-neutral/40">•</span>
-              <a href="https://wa.me/[number]" className="text-sovira-black hover:text-sovira-chartreuse transition-colors">
+              <a href="https://wa.me/[number]" className="text-sovira-black hover:text-sovira-chartreuse-readable transition-colors">
                 WhatsApp
               </a>
               <span className="text-sovira-neutral/40">•</span>
-              <a href="tel:+[number]" className="text-sovira-black hover:text-sovira-chartreuse transition-colors">
+              <a href="tel:+[number]" className="text-sovira-black hover:text-sovira-chartreuse-readable transition-colors">
                 +[Phone]
               </a>
             </div>

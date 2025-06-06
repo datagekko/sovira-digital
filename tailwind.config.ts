@@ -14,6 +14,7 @@ export default {
         'sovira-graphite': '#2F2F2F',
         'sovira-paper': '#F4F4F4',
         'sovira-chartreuse': '#C6FF00',
+        'sovira-chartreuse-readable': '#6564DB',
         'sovira-neutral': '#9B9B9B',
       },
       fontFamily: {

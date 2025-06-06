@@ -3,32 +3,59 @@ description:
 globs: 
 alwaysApply: true
 ---
+# Sovira Digital – Styling Conventions (v2 · May 2025)
 
-# Sovira Digital – Styling Conventions (v2 · May 2025)
-
-This style guide implements Sovira Digital’s **2025 Brand Guidelines**.  
+This style guide implements Sovira Digital's **2025 Brand Guidelines**.  
 Apply these conventions across all repositories—Shopify theme, headless front‑ends, documentation—so every touchpoint feels coherent.
 
 ---
 
-## Color System
+## 🎨 Brand Tokens (Implemented)
 
-### Palette tokens
-
-| Token | Tailwind class | Hex |
-|-------|---------------|-----|
-| **Black** | `sovira-black` | `#111111` |
-| **Graphite** (UI surfaces) | `sovira-graphite` | `#2F2F2F` |
-| **Paper** (background) | `sovira-paper` | `#F4F4F4` |
-| **Chartreuse** (accent) | `sovira-chartreuse` | `#C6FF00` |
+### Colors
+```typescript
+'sovira-black': '#111111',      // Primary text, buttons
+'sovira-graphite': '#2F2F2F',   // Secondary text, surfaces  
+'sovira-paper': '#F4F4F4',      // Backgrounds
+'sovira-chartreuse': '#C6FF00', // Accents (≤5% of design)
+'sovira-chartreuse-readable': '#6564DB', // Readable accent for white backgrounds
+'sovira-neutral': '#9B9B9B',    // Subtle text, icons
+```
 
 ### Usage guidelines
 - Declare the palette once in **`tailwind.config.ts`** under `theme.extend.colors`.
 - Use `bg-sovira-*`, `text-sovira-*`, `border-sovira-*`; opacity variants are generated automatically (`/50`, `/70`, etc.).
-- Maintain **WCAG AA (4.5 : 1)** contrast; prefer `text-sovira-paper` on dark surfaces.
+- Maintain **WCAG AA (4.5 : 1)** contrast; prefer `text-sovira-paper` on dark surfaces.
+- **Color Strategy for Readability**:
+  - Use `text-sovira-chartreuse` for glow effects and elements on dark backgrounds
+  - Use `text-sovira-chartreuse-readable` for text and icons on white/light backgrounds
+  - The readable variant (#6564DB) provides excellent contrast while maintaining brand cohesion
 - Gradients  
-  - Accent → Black: `bg-sovira-gradient-accent` (`from-sovira-chartreuse via-transparent to-sovira-black`)  
+  - Accent → Black: `bg-sovira-gradient-accent` (`from-sovira-chartreuse via-transparent to-sovira-black`)  
   - Graphite overlay: `bg-sovira-gradient-dark`
+
+### Chartreuse Implementation Strategy (v2.1 - Implemented)
+**Problem Solved**: Original chartreuse (#C6FF00) was difficult to read on white backgrounds.
+
+**Solution**: Dual-color system maintaining brand identity while improving accessibility.
+
+| Context | Color Token | Usage |
+|---------|-------------|--------|
+| **Glow effects** | `sovira-chartreuse` | Background glow, overlays, dark sections |
+| **Text on white** | `sovira-chartreuse-readable` | Checkmarks, highlights, hover states |
+| **Background elements** | `sovira-chartreuse` | Buttons, badges, non-text elements |
+
+**Implementation Examples**:
+```typescript
+// ✅ Glow effects - keep original chartreuse
+<span className="absolute inset-0 blur-3xl bg-sovira-chartreuse opacity-25" />
+
+// ✅ Text on white backgrounds - use readable variant
+<span className="text-sovira-chartreuse-readable">✓</span>
+
+// ✅ Conditional usage based on background
+<span className={`${tier.popular ? 'text-sovira-chartreuse-readable' : 'text-sovira-chartreuse'}`}>✓</span>
+```
 
 ---
 
@@ -36,28 +63,28 @@ Apply these conventions across all repositories—Shopify theme, headless front�
 
 | Context | Tailwind class | Font | Size / Tracking |
 |---------|---------------|------|-----------------|
-| Display H1 | `text-h1` | **Neue Haas Grotesk Display** | 96 px / –1 % |
-| H2 | `text-h2` | Neue Haas Grotesk Display | 72 px / –0.5 % |
-| H3 | `text-h3` | Neue Haas Grotesk Display | 48 px / 0 |
-| Body | `text-body` | **Suisse Int’l · system‑ui fallback** | 16 px / +2 % |
-| Caption | `text-caption` | Suisse Int’l | 14 px / +4 % |
-| Serif accent | `text-accent` | **Spectral Italic** | contextual |
+| Display H1 | `text-h1` | **Neue Haas Grotesk Display** | 96 px / –1 % |
+| H2 | `text-h2` | Neue Haas Grotesk Display | 72 px / –0.5 % |
+| H3 | `text-h3` | Neue Haas Grotesk Display | 48 px / 0 |
+| Body | `text-body` | **Suisse Int'l · system‑ui fallback** | 16 px / +2 % |
+| Caption | `text-caption` | Suisse Int'l | 14 px / +4 % |
+| Serif accent | `text-accent` | **Spectral Italic** | contextual |
 
 - Font imports live in **`app/globals.css`** (`@font-face` with `font-display: swap`).
-- Never mix Inter and Neue Haas—migrate any legacy components.
+- Never mix Inter and Neue Haas—migrate any legacy components.
 
 ---
 
-## Spacing & Layout
+## Spacing & Layout
 - Follow an **8‑px soft grid** (`p-2`, `p-4`, `my-8`, etc.).
 - Sections: `container mx-auto px-4 md:px-8 lg:px-12 max-w-screen-xl`.
-- Prefer **CSS Grid** first (`grid-cols-12 gap-6`); use FlexBox only for simple linear stacks.
+- Prefer **CSS Grid** first (`grid-cols-12 gap-6`); use FlexBox only for simple linear stacks.
 - Generous whitespace: `my-20` between hero sections, `my-14` for standard blocks.
 
 ---
 
-## Motion & UI Effects
-- **Easing:** `ease-out` with total **≤ 150 ms**.
+## Motion & UI Effects
+- **Easing:** `ease-out` with total **≤ 150 ms**.
 
     ```html
     transition-[opacity,transform] duration-150 ease-out
@@ -66,16 +93,213 @@ Apply these conventions across all repositories—Shopify theme, headless front�
 - **Glassmorphism:** `backdrop-blur-md bg-sovira-paper/30 shadow-glass max-w-md`.
 - **Mobile:** disable parallax (`md:translate-y-0`).
 - **Interactive states**
-  - Links & CTAs: `hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0`.
+  - Links & CTAs: `hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0`.
   - Form fields: 2‑px rounded outline `focus-visible:ring-2 focus-visible:ring-sovira-chartreuse/60`.
 
 ---
 
-## Component Structure
-- All section primitives reside in **`/components`**; follow `SectionName.*` pattern.
-- Collocate style hooks in `SectionName.styles.ts` to keep `.tsx` lean.
-- Reference canonical example in **`components/HeroSection.tsx`**.
+## 🏗️ Implemented Component Architecture
+
+### Header Component (`components/Header.tsx`)
+```typescript
+// Glass header with grid icon + SOVIRA wordmark + CTA
+<header className="glass backdrop-blur-md bg-sovira-paper/80 border-b border-sovira-paper/10">
+  // Grid icon: 3x3 matrix, 2px stroke, rounded joins
+  // SOVIRA wordmark: tracking-[0.2em] uppercase  
+  // CTA: chartreuse with hover states
+</header>
+```
+
+### Hero Section (`components/HeroSection.tsx`)
+```typescript
+// Multi-layered chartreuse glow implementation
+<div className="relative">
+  <div className="absolute inset-0 blur-3xl bg-sovira-chartreuse/25" />
+  <div className="absolute inset-0 blur-xl bg-sovira-chartreuse/40" />
+  <div className="absolute inset-0 blur-md bg-sovira-chartreuse/30" />
+  <h1 className="relative">Launch in 14 days</h1>
+</div>
+```
+
+## ✨ Glassmorphism System (Implemented)
+
+### Glass Classes
+```css
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(244, 244, 244, 0.8);  /* sovira-paper/80 */
+  border: 1px solid rgba(244, 244, 244, 0.1);
+  box-shadow: 0 8px 32px rgba(17, 17, 17, 0.1);
+}
+
+.glass-dark {
+  backdrop-filter: blur(12px);
+  background: rgba(47, 47, 47, 0.8);     /* sovira-graphite/80 */
+  border: 1px solid rgba(47, 47, 47, 0.1);
+}
+```
+
+### Glow Effects (Implemented)
+```css
+/* Multi-layer chartreuse glow */
+.glow-chartreuse {
+  position: relative;
+}
+
+.glow-chartreuse::before,
+.glow-chartreuse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #C6FF00;
+  border-radius: inherit;
+  filter: blur(20px);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.glow-chartreuse::after {
+  filter: blur(40px);
+  opacity: 0.15;
+}
+```
+
+## 🎛️ Interactive States
+
+### Button States (Implemented in Header CTA)
+```css
+/* Primary CTA */
+.btn-primary {
+  background: #C6FF00;
+  color: #111111;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #B8F000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(198, 255, 0, 0.3);
+}
+```
+
+### Focus States
+```css
+.focus-ring {
+  focus:outline-none;
+  focus:ring-2;
+  focus:ring-sovira-chartreuse/50;
+  focus:ring-offset-2;
+  focus:ring-offset-sovira-paper;
+}
+```
+
+## 📱 Responsive Patterns
+
+### Desktop-First Approach (Implemented)
+- Desktop: Full multi-column layouts
+- Tablet: Simplified layouts, maintained hierarchy
+- Mobile: Single column, touch-optimized
+
+### Typography Scaling (Implemented)
+```css
+/* Responsive headline scaling */
+.hero-headline {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+/* Desktop-first subheadline */
+.hero-subheadline {
+  white-space: nowrap; /* Desktop: single line */
+}
+
+@media (max-width: 768px) {
+  .hero-subheadline {
+    white-space: normal; /* Mobile: wrap allowed */
+  }
+}
+```
+
+## 🚀 Performance Optimizations (Implemented)
+
+### CSS Optimization
+- Tailwind CSS v3.4.0 (stable, optimized build)
+- Custom utility classes for repeated patterns
+- Minimal custom CSS, Tailwind-first approach
+
+### Component Strategy
+- Server-side rendering by default
+- No unnecessary 'use client' directives
+- Modular component architecture
+
+### Asset Optimization
+- **Logo files**: PNG for complex logos (10-50KB), SVG for simple graphics
+- **Image sizing**: Use `object-contain` for consistent display across varying logo dimensions
+- **Hover effects**: 300ms transitions to maintain ≤150ms guideline for UI elements
+
+## 🎯 Aspirational Elements (Future Implementation)
+
+### Advanced Animations
+```css
+/* Micro-interactions for enhanced UX */
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+```
+
+### Extended Glass System
+```css
+/* Advanced glassmorphism variants */
+.glass-subtle {
+  backdrop-filter: blur(8px);
+  background: rgba(244, 244, 244, 0.6);
+}
+
+.glass-strong {
+  backdrop-filter: blur(16px);
+  background: rgba(244, 244, 244, 0.9);
+}
+```
+
+### Error States
+```css
+.error-border {
+  border-color: #DC2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+```
+
+## 📋 Component Expansion Roadmap
+
+### Implemented Components
+- ✅ Header (grid icon, wordmark, CTA)
+- ✅ HeroSection (glow effects, responsive)
+- ✅ ProofSection (metrics, client logos, testimonials)
+- ✅ BrandReadySprint (pricing tiers)
+- ✅ RevShareAccelerator (calculator)
+- ✅ ComparisonTable (agency vs Sovira)
+- ✅ CTASection (final conversion)
+- ✅ Footer (minimal, professional)
+
+### Future Components (Aspirational)
+- 🔮 LoadingSpinner (glassmorphism)
+- 🔮 Modal (glass overlay)
+- 🔮 Form (error states, validation)
+- 🔮 Toast (notifications)
+- 🔮 ProgressBar (project status)
 
 ---
 
-_Last updated 2025‑05‑28 • Maintainer: Design Ops_
+_Last updated 2025‑05‑28 • Maintainer: Design Ops_

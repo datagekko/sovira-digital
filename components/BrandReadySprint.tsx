@@ -113,13 +113,18 @@ export default function BrandReadySprint() {
                 ))}
               </ul>
 
-              <button className={`w-full py-3 rounded-sm font-neue-haas font-bold transition-all duration-150 ${
-                tier.popular
-                  ? 'bg-sovira-black text-sovira-paper hover:bg-sovira-graphite'
-                  : 'bg-sovira-paper/10 hover:bg-sovira-paper/20'
-              }`}>
+              <a 
+                href="https://calendar.app.google/H2rgeWTpMBDyQzNE6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`block w-full py-3 rounded-sm font-neue-haas font-bold transition-all duration-150 text-center ${
+                  tier.popular
+                    ? 'bg-sovira-black text-sovira-paper hover:bg-sovira-graphite'
+                    : 'bg-sovira-paper/10 hover:bg-sovira-paper/20'
+                }`}
+              >
                 Select {tier.name}
-              </button>
+              </a>
             </div>
           ))}
         </div>

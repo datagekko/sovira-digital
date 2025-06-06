@@ -48,11 +48,16 @@ export default function HeroSection() {
 
             {/* Primary CTA - single, clear action */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="group relative px-8 py-4 bg-sovira-black text-sovira-paper font-neue-haas font-bold text-lg rounded-sm hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0 transition-all duration-150">
+              <a 
+                href="https://calendar.app.google/H2rgeWTpMBDyQzNE6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative px-8 py-4 bg-sovira-black text-sovira-paper font-neue-haas font-bold text-lg rounded-sm hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0 transition-all duration-150"
+              >
                 Book Discovery Call
                 {/* Arrow animation on hover */}
                 <span className="inline-block ml-2 transition-transform duration-150 group-hover:translate-x-1">→</span>
-              </button>
+              </a>
               
               {/* Secondary link - lower commitment */}
               <a href="#proof" className="text-sovira-graphite hover:text-sovira-black underline underline-offset-4 font-medium">
@@ -63,15 +68,15 @@ export default function HeroSection() {
             {/* Trust indicators - social proof */}
             <div className="mt-16 mb-20 flex flex-wrap justify-center items-center gap-8 text-sovira-neutral text-sm">
               <div className="flex items-center gap-2">
-                <span className="text-sovira-chartreuse">✓</span>
+                <span className="text-sovira-chartreuse-readable">✓</span>
                 <span>90-Day Payback Guarantee</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-sovira-chartreuse">✓</span>
+                <span className="text-sovira-chartreuse-readable">✓</span>
                 <span>€1M+ brands trust us</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-sovira-chartreuse">✓</span>
+                <span className="text-sovira-chartreuse-readable">✓</span>
                 <span>LCP &lt; 2.5s</span>
               </div>
             </div>

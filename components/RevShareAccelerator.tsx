@@ -22,19 +22,19 @@ export default function RevShareAccelerator() {
       <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-screen-xl relative z-10">
         {/* Section header */}
         <div className="text-center mb-16">
-          <p className="font-spectral italic text-sovira-chartreuse text-xl mb-4">
+          <p className="font-spectral italic text-sovira-chartreuse-readable text-xl mb-4">
             Path 2
           </p>
           <h2 className="font-neue-haas text-h3 md:text-h2 font-bold text-sovira-black mb-6">
             Rev-Share Accelerator
           </h2>
           <p className="text-2xl md:text-3xl text-sovira-graphite max-w-3xl mx-auto">
-            We profit from the lift we deliver, not retainers
+            We profit from the lift we deliver, not retainers.
           </p>
         </div>
 
         {/* Main offer structure */}
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 gap-12 mb-16 items-start">
           {/* Left: Pricing structure */}
           <div>
             <h3 className="font-neue-haas text-2xl font-bold text-sovira-black mb-6">
@@ -81,11 +81,11 @@ export default function RevShareAccelerator() {
 
           {/* Right: Calculator */}
           <div>
+            <h3 className="font-neue-haas text-2xl font-bold text-sovira-black mb-6">
+              Quick math example
+            </h3>
+            
             <div className="glass backdrop-blur-glass bg-sovira-paper/50 rounded-sm p-8">
-              <h3 className="font-neue-haas text-2xl font-bold text-sovira-black mb-6">
-                Quick math example
-              </h3>
-
               {!showCalculator ? (
                 <div>
                   <div className="space-y-4 mb-6">
@@ -100,7 +100,7 @@ export default function RevShareAccelerator() {
                     <div className="h-px bg-sovira-neutral/20" />
                     <div className="flex justify-between items-center">
                       <span className="text-sovira-graphite">Incremental revenue</span>
-                      <span className="font-neue-haas font-bold text-sovira-chartreuse">€120k</span>
+                      <span className="font-neue-haas font-bold text-sovira-chartreuse-readable">€120k</span>
                     </div>
                   </div>
 
@@ -111,7 +111,7 @@ export default function RevShareAccelerator() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sovira-graphite font-medium">You keep (80%)</span>
-                      <span className="font-neue-haas font-bold text-xl">€96k</span>
+                      <span className="font-neue-haas font-bold text-xl text-sovira-chartreuse-readable">€96k</span>
                     </div>
                   </div>
 
@@ -160,7 +160,7 @@ export default function RevShareAccelerator() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sovira-graphite font-medium">You keep (80%)</span>
-                      <span className="font-neue-haas font-bold text-xl text-sovira-chartreuse">
+                      <span className="font-neue-haas font-bold text-xl text-sovira-chartreuse-readable">
                         €{clientKeeps.toLocaleString()}
                       </span>
                     </div>
