@@ -93,12 +93,23 @@ if command_exists node; then
     fi
   fi
 else
-  print_error "Node.js is not installed!"
-  echo "Please install Node.js before continuing:"
-  echo "  - macOS: brew install node"
-  echo "  - Linux: sudo apt-get install nodejs npm"
-  echo "  - Windows: https://nodejs.org/en/download/"
-  exit 1
+  print_warning "Node.js is not installed. Attempting automatic installation..."
+  if [[ "$OS" == "linux" ]]; then
+    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && \
+    sudo apt-get install -y nodejs
+  elif [[ "$OS" == "mac" ]]; then
+    if command_exists brew; then
+      brew install node
+    else
+      print_error "Homebrew not found. Please install Node.js manually."
+      exit 1
+    fi
+  else
+    print_error "Automatic Node.js installation not supported for this OS."
+    exit 1
+  fi
+  print_success "Node.js installed successfully"
+  REINSTALL_NPM=true
 fi
 
 # Check for npm
@@ -147,6 +158,17 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 print_success "Dependencies installed successfully"
+
+# If Node.js was installed during this setup, run npm install again
+if [ "$REINSTALL_NPM" = true ]; then
+  print_section "Re-running npm install after Node.js setup"
+  npm install
+  if [ $? -ne 0 ]; then
+    print_error "Failed to install dependencies after Node.js installation."
+    exit 1
+  fi
+  print_success "Dependencies reinstalled successfully"
+fi
 
 # Check for missing font files (known issue)
 print_section "Checking font files"
