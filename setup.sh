@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 # Sovira Digital - Project Setup Script
 # This script helps set up the development environment for the Sovira Digital project.
 # It installs the required dependencies and prepares the project for development.
@@ -42,8 +43,10 @@ echo -e "${GREEN}=======================================${NC}"
 echo -e "This script will set up your development environment for the Sovira Digital project."
 echo -e "It will check for required dependencies and install missing ones."
 echo ""
-echo -e "Press ${YELLOW}ENTER${NC} to continue or ${YELLOW}CTRL+C${NC} to cancel..."
-read -r
+if [ -z "$CI" ]; then
+  echo -e "Press ${YELLOW}ENTER${NC} to continue or ${YELLOW}CTRL+C${NC} to cancel..."
+  read -r
+fi
 
 # Check operating system
 print_section "Checking operating system"
@@ -86,10 +89,12 @@ if command_exists node; then
   NODE_MAJOR_VERSION=$(echo $NODE_VERSION | cut -d '.' -f 1 | tr -d 'v')
   if [ "$NODE_MAJOR_VERSION" -lt 16 ]; then
     print_warning "Node.js version $NODE_VERSION may be too old. Sovira recommends version 16.x or higher."
-    echo "Would you like to continue anyway? (y/n)"
-    read -r response
-    if [[ "$response" != "y" && "$response" != "Y" ]]; then
-      exit 1
+    if [ -z "$CI" ]; then
+      echo "Would you like to continue anyway? (y/n)"
+      read -r response
+      if [[ "$response" != "y" && "$response" != "Y" ]]; then
+        exit 1
+      fi
     fi
   fi
 else
@@ -125,28 +130,27 @@ fi
 
 # Clone the repository if it doesn't exist
 print_section "Setting up project repository"
-if [ ! -d "sovira-digital" ]; then
-  echo "Cloning the Sovira Digital repository..."
-  git clone https://github.com/datagekko/sovira-digital.git
-  if [ $? -ne 0 ]; then
-    print_error "Failed to clone the repository. Please check your internet connection and GitHub access."
-    exit 1
-  fi
-  print_success "Repository cloned successfully"
-  cd sovira-digital
-else
-  print_warning "Directory 'sovira-digital' already exists"
-  echo "Would you like to update it? (This will fetch the latest changes) (y/n)"
-  read -r response
-  if [[ "$response" == "y" || "$response" == "Y" ]]; then
+# If the script is executed outside the repository, clone it.
+if [ ! -d .git ]; then
+  if [ ! -d "sovira-digital" ]; then
+    echo "Cloning the Sovira Digital repository..."
+    git clone https://github.com/datagekko/sovira-digital.git
+    if [ $? -ne 0 ]; then
+      print_error "Failed to clone the repository. Please check your internet connection and GitHub access."
+      exit 1
+    fi
+    print_success "Repository cloned successfully"
     cd sovira-digital
+  else
+    cd sovira-digital
+  fi
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git fetch
     git pull
     print_success "Repository updated successfully"
-  else
-    cd sovira-digital
-    print_warning "Skipping repository update"
   fi
+else
+  print_success "Repository already initialized"
 fi
 
 # Install dependencies
@@ -201,12 +205,16 @@ echo "You can access the site at:"
 echo "  - Local:   http://localhost:3000"
 echo "  - Network: http://<your-ip-address>:3000"
 echo ""
-echo "Would you like to start the development server now? (y/n)"
-read -r response
-if [[ "$response" == "y" || "$response" == "Y" ]]; then
-  npm run dev
+if [ -z "$CI" ]; then
+  echo "Would you like to start the development server now? (y/n)"
+  read -r response
+  if [[ "$response" == "y" || "$response" == "Y" ]]; then
+    npm run dev
+  else
+    echo "You can start the server later by running 'npm run dev' in this directory."
+  fi
 else
-  echo "You can start the server later by running 'npm run dev' in this directory."
+  echo "Run 'npm run dev' to start the development server."
 fi
 
 # Final instructions
