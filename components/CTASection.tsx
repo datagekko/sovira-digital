@@ -1,6 +1,11 @@
 export default function CTASection() {
   // reasoning: Final push with urgency (limited slots) and clear action
   // Reinforces key value props one last time
+
+  // Allow phone numbers to be configured via environment variables. Provide
+  // sensible defaults so links still work when variables are missing.
+  const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+18001234567";
+  const WHATSAPP_NUMBER = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || PHONE_NUMBER).replace(/\D/g, "");
   
   return (
     <section className="py-20 md:py-32 bg-sovira-paper relative overflow-hidden">
@@ -71,12 +76,18 @@ export default function CTASection() {
                 sprint@sovira.digital
               </a>
               <span className="text-sovira-neutral/40">•</span>
-              <a href="https://wa.me/[number]" className="text-sovira-black hover:text-sovira-chartreuse-readable transition-colors">
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                className="text-sovira-black hover:text-sovira-chartreuse-readable transition-colors"
+              >
                 WhatsApp
               </a>
               <span className="text-sovira-neutral/40">•</span>
-              <a href="tel:+[number]" className="text-sovira-black hover:text-sovira-chartreuse-readable transition-colors">
-                +[Phone]
+              <a
+                href={`tel:${PHONE_NUMBER}`}
+                className="text-sovira-black hover:text-sovira-chartreuse-readable transition-colors"
+              >
+                {PHONE_NUMBER}
               </a>
             </div>
           </div>
