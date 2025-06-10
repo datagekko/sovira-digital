@@ -25,7 +25,7 @@ export default function CTASection() {
           </h2>
 
           {/* Supporting copy */}
-          <p className="text-xl text-sovira-graphite mb-12 max-w-2xl mx-auto">
+          <p className="font-neue-haas text-xl text-sovira-graphite mb-12 max-w-2xl mx-auto">
             Join momentum brands who chose speed over excuses. 
             Beautiful stores that convert, live in 14 days or less.
           </p>

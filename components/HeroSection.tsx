@@ -41,7 +41,7 @@ export default function HeroSection() {
             </h1>
 
             {/* Sub-headline - addressing pain points */}
-            <p className="text-xl md:text-2xl text-sovira-graphite mb-12 max-w-3xl mx-auto">
+            <p className="font-neue-haas text-xl md:text-2xl text-sovira-graphite mb-12 max-w-3xl mx-auto">
               <span className="block md:inline">Premium Shopify storefronts for momentum fashion & wellness brands.</span>
               <span className="block mt-2 text-sovira-neutral">Fast. Beautiful. Built to convert.</span>
             </p>

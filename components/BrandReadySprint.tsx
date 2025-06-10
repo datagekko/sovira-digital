@@ -63,7 +63,7 @@ export default function BrandReadySprint() {
           <h2 className="font-neue-haas text-h3 md:text-h2 font-bold mb-6">
             Brand-Ready Sprint
           </h2>
-          <p className="text-2xl md:text-3xl text-sovira-paper/90 max-w-2xl mx-auto">
+          <p className="font-neue-haas text-2xl md:text-3xl text-sovira-paper/90 max-w-2xl mx-auto">
             Vision to Income in ≤ 30 Days
           </p>
         </div>
