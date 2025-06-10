@@ -41,6 +41,7 @@ export default function BrandReadySprint() {
       name: 'Super-Rush',
       timeline: '≤ 7 days',
       price: '€15,900',
+      premium: true,
       features: [
         'Everything in Fast-Track',
         '7-day development timeline',
@@ -76,7 +77,9 @@ export default function BrandReadySprint() {
               className={`relative rounded-sm p-8 transition-all duration-300 cursor-pointer group ${
                 tier.popular 
                   ? 'bg-sovira-paper text-sovira-black scale-105 shadow-2xl hover:shadow-sovira-chartreuse/30 hover:scale-107 hover:-translate-y-1' 
-                  : 'bg-sovira-graphite/20 backdrop-blur-glass hover:bg-sovira-graphite/30 hover:scale-105 hover:-translate-y-1 hover:shadow-lg'
+                  : tier.premium
+                    ? 'bg-gradient-to-b from-sovira-graphite/30 to-sovira-graphite/10 backdrop-blur-glass border border-sovira-chartreuse/20 hover:border-sovira-chartreuse/50 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(198,255,0,0.15)]'
+                    : 'bg-sovira-graphite/20 backdrop-blur-glass hover:bg-sovira-graphite/30 hover:scale-105 hover:-translate-y-1 hover:shadow-lg'
               }`}
               onClick={() => setSelectedTier(tier.id)}
             >
@@ -86,18 +89,31 @@ export default function BrandReadySprint() {
                   MOST POPULAR
                 </div>
               )}
+              
+              {/* Premium badge */}
+              {tier.premium && (
+                <div className="absolute -top-4 right-8 bg-sovira-paper text-sovira-black px-4 py-1 rounded-full text-sm font-bold group-hover:scale-110 transition-all duration-300 group-hover:bg-sovira-chartreuse">
+                  PREMIUM
+                </div>
+              )}
 
               <div className="text-center mb-6">
-                <h3 className="font-neue-haas text-2xl font-bold mb-2">
+                <h3 className={`font-neue-haas text-2xl font-bold mb-2 ${tier.premium ? 'text-sovira-chartreuse/90 group-hover:text-sovira-chartreuse' : ''}`}>
                   {tier.name}
                 </h3>
-                <p className={`text-lg ${tier.popular ? 'text-sovira-neutral' : 'text-sovira-paper/70'}`}>
+                <p className={`text-lg ${
+                  tier.popular ? 'text-sovira-neutral' : 
+                  tier.premium ? 'text-sovira-paper' : 
+                  'text-sovira-paper/70'
+                }`}>
                   {tier.timeline}
                 </p>
               </div>
 
               <div className="text-center mb-6">
-                <div className="text-4xl font-neue-haas font-bold mb-2 group-hover:text-sovira-chartreuse transition-colors duration-300">
+                <div className={`text-4xl font-neue-haas font-bold mb-2 transition-all duration-300 ${
+                  tier.premium ? 'text-sovira-paper group-hover:scale-110' : ''
+                }`}>
                   {tier.price}
                 </div>
               </div>
@@ -105,8 +121,16 @@ export default function BrandReadySprint() {
               <ul className="space-y-3 mb-8">
                 {tier.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-2">
-                    <span className={`mt-0.5 group-hover:scale-110 transition-transform duration-200 ${tier.popular ? 'text-sovira-chartreuse-readable' : 'text-sovira-chartreuse'}`}>✓</span>
-                    <span className={`text-sm ${tier.popular ? 'text-sovira-graphite' : 'text-sovira-paper/90'}`}>
+                    <span className={`mt-0.5 group-hover:scale-110 transition-transform duration-200 ${
+                      tier.popular ? 'text-sovira-chartreuse-readable' : 
+                      tier.premium ? 'text-sovira-chartreuse/90 group-hover:text-sovira-chartreuse' : 
+                      'text-sovira-chartreuse'
+                    }`}>✓</span>
+                    <span className={`text-sm ${
+                      tier.popular ? 'text-sovira-graphite' : 
+                      tier.premium ? 'text-sovira-paper font-medium' : 
+                      'text-sovira-paper/90'
+                    }`}>
                       {feature}
                     </span>
                   </li>
@@ -120,7 +144,9 @@ export default function BrandReadySprint() {
                 className={`block w-full py-3 rounded-sm font-neue-haas font-bold transition-all duration-300 text-center transform group-hover:scale-105 ${
                   tier.popular
                     ? 'bg-sovira-black text-sovira-paper hover:bg-sovira-graphite hover:shadow-sovira-cta'
-                    : 'bg-sovira-paper/10 hover:bg-sovira-paper/20 hover:shadow-sovira-cta'
+                    : tier.premium 
+                      ? 'bg-sovira-paper/20 text-sovira-paper hover:bg-sovira-chartreuse hover:text-sovira-black hover:shadow-sovira-cta'
+                      : 'bg-sovira-paper/10 hover:bg-sovira-paper/20 hover:shadow-sovira-cta'
                 }`}
               >
                 Select {tier.name}
