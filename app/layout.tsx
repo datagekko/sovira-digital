@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Sovira Digital - Premium Shopify Stores in 14 Days",
@@ -32,7 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased" suppressHydrationWarning>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

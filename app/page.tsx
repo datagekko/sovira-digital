@@ -4,7 +4,6 @@ import BrandReadySprint from '@/components/BrandReadySprint';
 import RevShareAccelerator from '@/components/RevShareAccelerator';
 import ComparisonTable from '@/components/ComparisonTable';
 import CTASection from '@/components/CTASection';
-import Footer from '@/components/Footer';
 
 export default function Home() {
   // reasoning: Landing page follows conversion-optimized flow
@@ -29,9 +28,6 @@ export default function Home() {
       
       {/* Final CTA with urgency */}
       <CTASection />
-      
-      {/* Minimal footer */}
-      <Footer />
     </>
   );
 }

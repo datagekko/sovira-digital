@@ -119,10 +119,15 @@ export default function ComparisonTable() {
             <p className="text-sovira-paper/60 mb-6">
               Join 50+ momentum brands who've made the switch
             </p>
-            <button className="px-8 py-4 bg-sovira-chartreuse text-sovira-black font-neue-haas font-bold text-lg rounded-sm hover:bg-sovira-chartreuse/90 transition-all duration-150">
+            <a 
+              href="https://calendar.app.google/H2rgeWTpMBDyQzNE6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-sovira-chartreuse text-sovira-black font-neue-haas font-bold text-lg rounded-sm hover:bg-sovira-chartreuse/90 transition-all duration-150"
+            >
               Book Your Sprint Call
               <span className="inline-block ml-2">→</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
