@@ -28,7 +28,7 @@ export default function RevShareAccelerator() {
           <h2 className="font-neue-haas text-h3 md:text-h2 font-bold text-sovira-black mb-6">
             Rev-Share Accelerator
           </h2>
-          <p className="text-2xl md:text-3xl text-sovira-graphite max-w-3xl mx-auto">
+          <p className="font-neue-haas text-2xl md:text-3xl text-sovira-graphite max-w-3xl mx-auto">
             We profit from the lift we deliver, not retainers.
           </p>
         </div>
