@@ -1,7 +1,7 @@
 ---
-description: his rule defines an autonomous operational mode for the AI, guiding it through the RIPER (Research, Innovate, Plan, Execute, Review) framework. It emphasizes continuous execution, proactive information gathering, structured error handling, and specific testing/validation strategies, minimizing user intervention unless critical issues arise or explicit interruption occurs. The AI will log mode transitions and can suggest improvements to this workflow.
+description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # Autonomous RIPER Workflow
 

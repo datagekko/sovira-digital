@@ -18,7 +18,7 @@ export default function ComparisonTable() {
     {
       feature: 'Performance Guarantee',
       traditional: 'None',
-      sovira: '90-Day Payback Pledge',
+      sovira: '90-Day Performance Guarantee',
       highlight: true,
     },
     {
@@ -39,7 +39,7 @@ export default function ComparisonTable() {
     {
       feature: 'Founder Access',
       traditional: 'Account manager',
-      sovira: 'Direct Slack line',
+      sovira: 'Direct WhatsApp',
     },
   ];
 
@@ -117,7 +117,7 @@ export default function ComparisonTable() {
           {/* Bottom CTA */}
           <div className="mt-12 text-center">
             <p className="text-sovira-paper/60 mb-6">
-              Join 50+ momentum brands who've made the switch
+              Join 10+ momentum brands who've made the switch
             </p>
             <a 
               href="https://calendar.app.google/H2rgeWTpMBDyQzNE6"

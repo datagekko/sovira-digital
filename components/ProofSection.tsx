@@ -5,7 +5,7 @@ export default function ProofSection() {
   const metrics = [
     { value: '€2.4M', label: 'Revenue generated for clients', suffix: '+' },
     { value: '14', label: 'Average days to launch', suffix: ' days' },
-    { value: '3.2', label: 'Average conversion rate', suffix: '%' },
+    { value: '2.0', label: 'Average conversion rate', suffix: '%' },
     { value: '2.1', label: 'Average page load speed', suffix: 's' },
   ];
 

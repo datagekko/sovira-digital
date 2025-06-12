@@ -162,7 +162,7 @@ export default function BrandReadySprint() {
               <span className="text-sovira-black text-2xl font-bold">90</span>
             </div>
             <h3 className="font-neue-haas text-2xl md:text-3xl font-bold mb-4">
-              90-Day Payback Performance Pledge
+              90-Day Performance Guarantee
             </h3>
             <p className="text-sovira-paper/80 text-lg mb-6">
               If net-new revenue hasn't covered your Sprint fee within 90 days, 
@@ -178,9 +178,9 @@ export default function BrandReadySprint() {
         <div className="mt-16 text-center">
           <p className="text-sovira-paper/70 mb-4">Requirements to start:</p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
-            <span className="px-4 py-2 bg-sovira-paper/10 rounded-full">Brand deck ready</span>
-            <span className="px-4 py-2 bg-sovira-paper/10 rounded-full">≤ 100 SKUs</span>
-            <span className="px-4 py-2 bg-sovira-paper/10 rounded-full">One feedback round</span>
+            <span className="px-4 py-2 bg-sovira-paper/10 rounded-full">Brand identity established</span>
+            <span className="px-4 py-2 bg-sovira-paper/10 rounded-full">Content ready</span>
+            <span className="px-4 py-2 bg-sovira-paper/10 rounded-full">48-hour decision commitment</span>
           </div>
         </div>
       </div>
