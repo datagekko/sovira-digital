@@ -3,24 +3,48 @@ description:
 globs: 
 alwaysApply: true
 ---
-# Sovira Digital – Styling Conventions (v2 · May 2025)
+# Sovira Digital – Styling Conventions (v2.1 · June 2025)
 
-This style guide implements Sovira Digital's **2025 Brand Guidelines**.  
-Apply these conventions across all repositories—Shopify theme, headless front‑ends, documentation—so every touchpoint feels coherent.
+This style guide implements Sovira Digital's **2025 Brand Guidelines** and reflects our latest technical decisions, including the adoption of `shadcn/ui`.
 
 ---
 
-## 🎨 Brand Tokens (Implemented)
+## 🤖 UI Framework: shadcn/ui (v2.1)
 
-### Colors
-```typescript
-'sovira-black': '#111111',      // Primary text, buttons
-'sovira-graphite': '#2F2F2F',   // Secondary text, surfaces  
-'sovira-paper': '#F4F4F4',      // Backgrounds
-'sovira-chartreuse': '#C6FF00', // Accents (≤5% of design)
-'sovira-chartreuse-readable': '#6564DB', // Readable accent for white backgrounds
-'sovira-neutral': '#9B9B9B',    // Subtle text, icons
+To standardize our component library and accelerate development, we now use **`shadcn/ui`**. This is a significant change from our previous approach.
+
+- **Core Principle**: `shadcn/ui` is not a traditional component library. It provides source code that we copy into our project, giving us full control.
+- **Installation**: `npx shadcn@latest init`
+- **Configuration**: See `components.json` for path aliases (`@/components`, `@/lib/utils`).
+- **Adding Components**: Add new components via `npx shadcn@latest add [component-name]`. They will be added to `components/ui`.
+
+---
+
+## 🎨 Brand Tokens (v2.1)
+
+### Colors (via CSS HSL Variables)
+The `shadcn/ui` integration introduces a new, semantic color system using HSL variables defined in `:root` within `app/globals.css`. **This is the new standard.**
+
+```css
+/* Example from app/globals.css */
+:root {
+  --background: 0 0% 95.7%; /* Mapped to sovira-paper */
+  --foreground: 0 0% 6.7%;  /* Mapped to sovira-black */
+  --primary: 240 57.9% 62.6%; /* Mapped to sovira-chartreuse-readable */
+  --accent: 75 100% 50%;      /* Mapped to sovira-chartreuse */
+  /* ... and other shadcn variables for borders, inputs, etc. */
+}
 ```
+
+**Usage Guidelines**:
+- **Application**: Always prefer Tailwind's semantic classes (`bg-background`, `text-primary`, `border-accent`) over direct color classes like `bg-sovira-paper`. This makes our theming more robust.
+- **Global Selection Highlight**: The browser's text selection highlight is globally styled to use `sovira-chartreuse` for a branded feel. This is configured in `app/globals.css`.
+  ```css
+  ::selection {
+    background: #C6FF00; /* var(--accent) */
+    color: #111111;      /* var(--foreground) */
+  }
+  ```
 
 ### Usage guidelines
 - Declare the palette once in **`tailwind.config.ts`** under `theme.extend.colors`.
@@ -59,19 +83,19 @@ Apply these conventions across all repositories—Shopify theme, headless front�
 
 ---
 
-## Typography
+## Typography (v2.1)
 
-| Context | Tailwind class | Font | Size / Tracking |
-|---------|---------------|------|-----------------|
-| Display H1 | `text-h1` | **Neue Haas Grotesk Display** | 96 px / –1 % |
-| H2 | `text-h2` | Neue Haas Grotesk Display | 72 px / –0.5 % |
-| H3 | `text-h3` | Neue Haas Grotesk Display | 48 px / 0 |
-| Body | `text-body` | **Suisse Int'l · system‑ui fallback** | 16 px / +2 % |
-| Caption | `text-caption` | Suisse Int'l | 14 px / +4 % |
-| Serif accent | `text-accent` | **Spectral Italic** | contextual |
+The global typography scale has been updated for better rhythm and responsiveness. **The old `text-h1`, `text-h2` classes are deprecated.**
 
-- Font imports live in **`app/globals.css`** (`@font-face` with `font-display: swap`).
-- Never mix Inter and Neue Haas—migrate any legacy components.
+| Context | Tailwind class | Font | Size (Mobile / Desktop) |
+|---------|---------------|------|-------------------------|
+| Hero Headline | `text-6xl md:text-[96px]` | **Neue Haas Grotesk Display** | 72px / 96px |
+| Section Headline | `text-5xl md:text-[72px]` | Neue Haas Grotesk Display | 60px / 72px |
+| Subsection Head | `text-4xl md:text-6xl` | Neue Haas Grotesk Display | 36px / 60px |
+| Body | `text-base` | **Neue Haas Grotesk Display** | 16px |
+| Caption | `text-sm` | Neue Haas Grotesk Display | 14px |
+
+- **Font System**: All body and caption text now uses **Neue Haas Grotesk Display**. The `Suisse Int'l` font has been completely removed from the project.
 
 ---
 
@@ -97,6 +121,250 @@ Apply these conventions across all repositories—Shopify theme, headless front�
   - Form fields: 2‑px rounded outline `focus-visible:ring-2 focus-visible:ring-sovira-chartreuse/60`.
 
 ---
+
+## 🏗️ Implemented Component Architecture
+
+### Header Component (`components/Header.tsx`)
+```typescript
+// Glass header with grid icon + SOVIRA wordmark + CTA
+<header className="glass backdrop-blur-md bg-sovira-paper/80 border-b border-sovira-paper/10">
+  // Grid icon: 3x3 matrix, 2px stroke, rounded joins
+  // SOVIRA wordmark: tracking-[0.2em] uppercase
+  // On mobile: logo (icon + wordmark) is 125px wide (w-[125px] md:w-auto)
+  // CTA: chartreuse with hover states, hidden on mobile (hidden md:inline-block), always single-line (whitespace-nowrap)
+</header>
+```
+
+### Hero Section (`components/HeroSection.tsx`)
+```typescript
+// Multi-layered chartreuse glow implementation
+<div className="relative">
+  <div className="absolute inset-0 blur-3xl bg-sovira-chartreuse/25" />
+  <div className="absolute inset-0 blur-xl bg-sovira-chartreuse/40" />
+  <div className="absolute inset-0 blur-md bg-sovira-chartreuse/30" />
+  <h1 className="relative text-[48px] md:text-[96px] font-bold">Ready to sell in<br /><span className="glow">14 days</span></h1>
+</div>
+// Copy: Medium headline, main headline, sub-headline, CTA, trust indicators (✓ €1M+ brands trust us, ✓ 90-day performance pledge)
+// Scroll indicator: always visible within the fold, directly below guarantees, minimal spacing (mb-4 md:mb-6), no flex-end alignment
+```
+
+## ✨ Glassmorphism System (Implemented)
+
+### Glass Classes
+```css
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(244, 244, 244, 0.8);  /* sovira-paper/80 */
+  border: 1px solid rgba(244, 244, 244, 0.1);
+  box-shadow: 0 8px 32px rgba(17, 17, 17, 0.1);
+}
+
+.glass-dark {
+  backdrop-filter: blur(12px);
+  background: rgba(47, 47, 47, 0.8);     /* sovira-graphite/80 */
+  border: 1px solid rgba(47, 47, 47, 0.1);
+}
+```
+
+### Glow Effects (Implemented)
+```css
+/* Multi-layer chartreuse glow */
+.glow-chartreuse {
+  position: relative;
+}
+
+.glow-chartreuse::before,
+.glow-chartreuse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #C6FF00;
+  border-radius: inherit;
+  filter: blur(20px);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.glow-chartreuse::after {
+  filter: blur(40px);
+  opacity: 0.15;
+}
+```
+
+## 🎛️ Interactive States
+
+### Button States (Implemented in Header CTA)
+```css
+/* Primary CTA */
+.btn-primary {
+  background: #C6FF00;
+  color: #111111;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #B8F000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(198, 255, 0, 0.3);
+}
+```
+
+### Focus States
+```css
+.focus-ring {
+  focus:outline-none;
+  focus:ring-2;
+  focus:ring-sovira-chartreuse/50;
+  focus:ring-offset-2;
+  focus:ring-offset-sovira-paper;
+}
+```
+
+## 📱 Responsive Patterns
+
+### Desktop-First Approach (Implemented)
+- Desktop: Full multi-column layouts
+- Tablet: Simplified layouts, maintained hierarchy
+- Mobile: Single column, touch-optimized
+
+### Typography Scaling (Implemented)
+```css
+/* Responsive headline scaling */
+.hero-headline {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+/* Desktop-first subheadline */
+.hero-subheadline {
+  white-space: nowrap; /* Desktop: single line */
+}
+
+@media (max-width: 768px) {
+  .hero-subheadline {
+    white-space: normal; /* Mobile: wrap allowed */
+  }
+}
+```
+
+## 🚀 Performance Optimizations (Implemented)
+
+### CSS Optimization
+- Tailwind CSS v3.4.0 (stable, optimized build)
+- Custom utility classes for repeated patterns
+- Minimal custom CSS, Tailwind-first approach
+
+### Component Strategy
+- Server-side rendering by default
+- No unnecessary 'use client' directives
+- Modular component architecture
+
+### Asset Optimization
+- **Logo files**: PNG for complex logos (10-50KB), SVG for simple graphics
+- **Image sizing**: Use `object-contain` for consistent display across varying logo dimensions
+- **Hover effects**: 300ms transitions to maintain ≤150ms guideline for UI elements
+
+## 🎯 Aspirational Elements (Future Implementation)
+
+### Advanced Animations
+```css
+/* Micro-interactions for enhanced UX */
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+```
+
+### Extended Glass System
+```css
+/* Advanced glassmorphism variants */
+.glass-subtle {
+  backdrop-filter: blur(8px);
+  background: rgba(244, 244, 244, 0.6);
+}
+
+.glass-strong {
+  backdrop-filter: blur(16px);
+  background: rgba(244, 244, 244, 0.9);
+}
+```
+
+### Error States
+```css
+.error-border {
+  border-color: #DC2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+```
+
+## 📋 Component Expansion Roadmap
+
+### Implemented Components
+- ✅ Header (grid icon, wordmark, CTA)
+- ✅ HeroSection (glow effects, responsive)
+- ✅ ProofSection (metrics, client logos, testimonials)
+- ✅ BrandReadySprint (pricing tiers)
+- ✅ RevShareAccelerator (calculator)
+- ✅ ComparisonTable (agency vs Sovira)
+- ✅ CTASection (final conversion)
+- ✅ Footer (minimal, professional)
+
+### Future Components (Aspirational)
+- 🔮 LoadingSpinner (glassmorphism)
+- 🔮 Modal (glass overlay)
+- 🔮 Form (error states, validation)
+- 🔮 Toast (notifications)
+- 🔮 ProgressBar (project status)
+
+---
+
+## 🏗️ Implemented Component Patterns (v2.1)
+
+### Responsive Comparison Table (`components/ComparisonTable.tsx`)
+**Requirement**: The table must be perfectly readable on all devices without horizontal scrolling.
+
+**Implementation**:
+- **Desktop**: A standard three-column layout using `shadcn/ui`'s `<Table>` component. Key rows are highlighted with a subtle background color (`bg-sovira-paper/[.03]`) and increased vertical padding (`py-8`) for a premium feel.
+- **Mobile**: The layout transforms into a stacked card view. Each feature is presented in its own card, with "Traditional" and "Sovira" values displayed side-by-side. This is achieved by conditionally rendering the layouts using `md:hidden` and `hidden md:block`.
+
+```typescript
+// Desktop Layout (hidden on mobile)
+<div className="hidden md:block">
+  <Table> ... </Table>
+</div>
+
+// Mobile Layout (hidden on desktop)
+<div className="md:hidden">
+  {items.map(item => (
+    <div className="p-4 rounded-lg bg-sovira-paper/5">
+      {/* Mobile card structure */}
+    </div>
+  ))}
+</div>
+```
+This pattern is our standard for presenting complex data on different screen sizes.
+
+---
+
+## 🎛️ Interactive States
+
+### Text Selection
+As noted in the color section, all user-selected text is now highlighted with the brand's primary chartreuse color for a cohesive experience. This is a global style.
+
+---
+_Last updated 2025‑06‑12 • Maintainer: Design Ops_
+
 
 ## 🏗️ Implemented Component Architecture
 

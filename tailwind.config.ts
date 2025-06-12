@@ -1,60 +1,90 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config = {
+  darkMode: ["class"],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
-        // Sovira brand colors
         'sovira-black': '#111111',
         'sovira-graphite': '#2F2F2F',
         'sovira-paper': '#F4F4F4',
         'sovira-chartreuse': '#C6FF00',
         'sovira-chartreuse-readable': '#6564DB',
         'sovira-neutral': '#9B9B9B',
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
         'neue-haas': ['Neue Haas Grotesk Display', 'system-ui', 'sans-serif'],
         'spectral': ['Spectral', 'serif'],
-        'suisse': ['Suisse Int\'l', 'system-ui', 'sans-serif'],
-      },
-      fontSize: {
-        'h1': ['96px', { lineHeight: '1', letterSpacing: '-0.01em' }],
-        'h2': ['72px', { lineHeight: '1.1', letterSpacing: '-0.005em' }],
-        'h3': ['48px', { lineHeight: '1.2', letterSpacing: '0' }],
-        'body': ['16px', { lineHeight: '1.6', letterSpacing: '0.02em' }],
-        'caption': ['14px', { lineHeight: '1.5', letterSpacing: '0.04em' }],
-      },
-      backgroundImage: {
-        'sovira-gradient-accent': 'linear-gradient(to bottom, #C6FF00, transparent, #111111)',
-        'sovira-gradient-dark': 'linear-gradient(to bottom, rgba(47, 47, 47, 0.8), transparent)',
-      },
-      boxShadow: {
-        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-        'sovira-cta': '0 4px 20px rgba(198, 255, 0, 0.3)',
-      },
-      backdropBlur: {
-        'glass': '12px',
-      },
-      animation: {
-        'fade-in': 'fadeIn 0.15s ease-out',
-        'slide-up': 'slideUp 0.15s ease-out',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-        slideUp: {
-          '0%': { transform: 'translateY(10px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
-} satisfies Config; 
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
+
+export default config 

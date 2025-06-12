@@ -23,7 +23,7 @@ This directory should contain the following font files for the Sovira brand:
 Until custom fonts are added, the site will use these system fallbacks:
 - Neue Haas → system-ui, -apple-system, sans-serif
 - Spectral → serif
-- Suisse Int'l → system-ui, -apple-system, sans-serif
+- Neue Haas Grotesk Display → system-ui, -apple-system, sans-serif
 
 ## Performance Note
 

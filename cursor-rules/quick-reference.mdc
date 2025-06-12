@@ -56,7 +56,9 @@ npm run dev
 **Fix**: Use `md:` prefixes. Check `max-w-3xl mx-auto` containers.
 
 ## 🎯 Brand Guidelines TL;DR
-- **Typography**: Neue Haas Display for headlines, Suisse Int'l for body
+- **Colors**: Use `shadcn/ui` color variables (`bg-background`, `text-primary`).
+- **Typography**: Neue Haas Grotesk Display for all text. See `sovira-styling-conventions.mdc` for the full responsive scale.
+- **UI Components**: Build new components using `shadcn/ui`.
 - **Spacing**: Use 8px grid (`p-2`, `p-4`, `p-8`, etc.)
 - **Motion**: Max 150ms transitions with `ease-out`
 - **Glassmorphism**: `backdrop-blur-md bg-sovira-paper/80`
@@ -84,5 +86,4 @@ npm run dev
 - **Brand Questions**: See `brand-guideliness.mdc`
 - **Technical Problems**: Check `developer-onboarding.mdc` → Common Issues
 
----
-*Updated: January 2025 | For full docs see: `developer-onboarding.mdc`*
+## ✅ Key Files

@@ -42,20 +42,12 @@ components/
 ## 🎨 Brand System Integration
 
 ### Color Palette
-```typescript
-// Tailwind Config Colors
-'sovira-black': '#111111',     // Primary text and buttons
-'sovira-graphite': '#2F2F2F',  // UI surfaces and secondary text
-'sovira-paper': '#F4F4F4',     // Background color
-'sovira-chartreuse': '#C6FF00', // Accent color (≤5% usage)
-'sovira-chartreuse-readable': '#6564DB', // Readable accent for white backgrounds
-'sovira-neutral': '#9B9B9B',   // Neutral text and icons
-```
+Our brand colors are managed via HSL variables in `app/globals.css` as part of our `shadcn/ui` integration. Use semantic variable names like `bg-background` and `text-primary`.
 
 ### Typography System
-- **Display Headlines**: Neue Haas Grotesk Display (H1: 96px, H2: 72px, H3: 48px)
-- **Body Text**: Suisse Int'l with system-ui fallback
-- **Accent Text**: Spectral Italic for taglines and emphasis
+- **Display Headlines**: `text-6xl md:text-[96px]`, `text-5xl md:text-[72px]`, etc.
+- **Body Text**: Neue Haas Grotesk Display with system-ui fallback (`text-base`).
+- **Font System**: All fonts are self-hosted in `/public/fonts`. The `Suisse Int'l` font has been deprecated.
 
 ### Design Principles
 - **Glassmorphism**: Frosted-glass cards with backdrop-blur-md
@@ -112,7 +104,7 @@ npm run lint         # Run ESLint
 
 **Design system implementation:**
 - **Colors**: All brand colors as Tailwind tokens
-- **Typography**: Neue Haas, Spectral, and Suisse Int'l integration
+- **Typography**: Neue Haas Grotesk Display and Spectral integration
 - **Glassmorphism**: Consistent backdrop-blur effects
 - **Animations**: Smooth hover states and micro-interactions
 
@@ -403,3 +395,22 @@ For detailed brand guidelines, see:
 **Welcome to the team!** This documentation should give you everything you need to start contributing effectively. When in doubt, refer to the brand guidelines and don't hesitate to ask questions.
 
 *Last updated: January 2025*
+
+## 🛠️ Tech Stack & Architecture
+
+### Frontend Framework
+- **Next.js 14** with App Router
+- **React 18**
+- **TypeScript**
+
+### UI & Styling
+- **`shadcn/ui`**: Our primary component library. Add new components with `npx shadcn@latest add [name]`.
+- **Tailwind CSS**: For all styling. Use `@apply` sparingly.
+- **`clsx` & `tailwind-merge`**: For conditional class names (via `lib/utils.ts`).
+
+### Code Quality
+- **Component Structure**: Follow the patterns in existing components (`HeroSection.tsx`, `ComparisonTable.tsx`).
+  - **Data Fetching**: Server Components preferred.
+  - **State Management**: `useState` / `useReducer` for local state.
+  - **Responsive Design**: Use mobile-first utilities (`md:`, `lg:`). See `ComparisonTable.tsx` for responsive pattern example.
+- **Styling**: Adhere to `sovira-styling-conventions.mdc`.

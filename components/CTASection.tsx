@@ -19,15 +19,15 @@ export default function CTASection() {
           </div>
 
           {/* Main CTA headline */}
-          <h2 className="font-neue-haas text-h3 md:text-h2 font-bold text-sovira-black mb-6">
+          <h2 className="font-neue-haas text-5xl md:text-[72px] leading-[1.1] font-bold text-sovira-black mb-8">
             Your competition launches next week.
-            <span className="block text-sovira-chartreuse-readable mt-2">What about you?</span>
+            <br />
+            <span className="text-sovira-chartreuse-readable">What about you?</span>
           </h2>
 
           {/* Supporting copy */}
           <p className="font-neue-haas text-xl text-sovira-graphite mb-12 max-w-2xl mx-auto">
-            Join momentum brands who chose speed over excuses. 
-            Beautiful stores that convert, live in 14 days or less.
+            Join momentum brands who chose speed over excuses. Beautiful stores that convert, live in 14 days or less.
           </p>
 
           {/* CTA buttons */}
@@ -51,7 +51,7 @@ export default function CTASection() {
           <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-sovira-neutral">
             <div className="flex items-center gap-2">
               <span className="text-sovira-chartreuse-readable">✓</span>
-              <span>90-Day Payback Guarantee</span>
+              <span>90-Day Performance Guarantee</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-sovira-chartreuse-readable">✓</span>
@@ -71,12 +71,8 @@ export default function CTASection() {
                 sprint@sovira.digital
               </a>
               <span className="text-sovira-neutral/40">•</span>
-              <a href="https://wa.me/[number]" className="text-sovira-black hover:text-sovira-chartreuse-readable transition-colors">
+              <a href="https://wa.me/4549408470" className="text-sovira-black hover:text-sovira-chartreuse-readable transition-colors">
                 WhatsApp
-              </a>
-              <span className="text-sovira-neutral/40">•</span>
-              <a href="tel:+[number]" className="text-sovira-black hover:text-sovira-chartreuse-readable transition-colors">
-                +[Phone]
               </a>
             </div>
           </div>

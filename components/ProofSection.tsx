@@ -29,7 +29,7 @@ export default function ProofSection() {
       <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-screen-xl relative z-10">
         {/* Section header */}
         <div className="text-center mb-16">
-          <h2 className="font-neue-haas text-h3 md:text-h2 font-bold text-sovira-black mb-4">
+          <h2 className="font-neue-haas text-4xl md:text-6xl font-bold text-sovira-black mb-4">
             Momentum brands choose speed
           </h2>
           <p className="font-spectral italic text-sovira-neutral text-xl">

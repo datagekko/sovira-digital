@@ -22,10 +22,10 @@ export default function RevShareAccelerator() {
       <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-screen-xl relative z-10">
         {/* Section header */}
         <div className="text-center mb-16">
-          <p className="font-spectral italic text-sovira-chartreuse-readable text-xl mb-4">
+          <p className="font-neue-haas text-sovira-chartreuse-readable font-bold mb-4 tracking-wider">
             Path 2
           </p>
-          <h2 className="font-neue-haas text-h3 md:text-h2 font-bold text-sovira-black mb-6">
+          <h2 className="font-neue-haas text-4xl md:text-6xl font-bold text-sovira-black mb-6">
             Rev-Share Accelerator
           </h2>
           <p className="font-neue-haas text-2xl md:text-3xl text-sovira-graphite max-w-3xl mx-auto">

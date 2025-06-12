@@ -20,7 +20,7 @@ export default function Footer() {
             <a href="#" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
               Work
             </a>
-            <a href="#" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
+            <a href="https://wa.me/4549408470" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
               Contact
             </a>
           </div>

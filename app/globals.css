@@ -27,14 +27,71 @@
   font-display: swap;
 }
 
-:root {
-  /* Sovira brand colors */
-  --sovira-black: #111111;
-  --sovira-graphite: #2F2F2F;
-  --sovira-paper: #F4F4F4;
-  --sovira-chartreuse: #C6FF00;
-  --sovira-chartreuse-readable: #6564DB;
-  --sovira-neutral: #9B9B9B;
+@layer base {
+  :root {
+    --background: 0 0% 95.7%;
+    --foreground: 0 0% 6.7%;
+    --card: 0 0% 95.7%;
+    --card-foreground: 0 0% 6.7%;
+    --popover: 0 0% 95.7%;
+    --popover-foreground: 0 0% 6.7%;
+    --primary: 240 57.9% 62.6%;
+    --primary-foreground: 0 0% 95.7%;
+    --secondary: 0 0% 18.4%;
+    --secondary-foreground: 0 0% 95.7%;
+    --muted: 0 0% 60.8%;
+    --muted-foreground: 0 0% 6.7%;
+    --accent: 75 100% 50%;
+    --accent-foreground: 0 0% 6.7%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 18.4%;
+    --input: 0 0% 18.4%;
+    --ring: 240 57.9% 62.6%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 6.7%;
+    --foreground: 0 0% 95.7%;
+    --card: 0 0% 6.7%;
+    --card-foreground: 0 0% 95.7%;
+    --popover: 0 0% 6.7%;
+    --popover-foreground: 0 0% 95.7%;
+    --primary: 240 57.9% 62.6%;
+    --primary-foreground: 0 0% 95.7%;
+    --secondary: 0 0% 18.4%;
+    --secondary-foreground: 0 0% 95.7%;
+    --muted: 0 0% 60.8%;
+    --muted-foreground: 0 0% 95.7%;
+    --accent: 75 100% 50%;
+    --accent-foreground: 0 0% 6.7%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 18.4%;
+    --input: 0 0% 18.4%;
+    --ring: 240 57.9% 62.6%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  ::selection {
+    background: #C6FF00;
+    color: #111111;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 /* Base styles */
@@ -51,7 +108,7 @@ html {
 body {
   background: var(--sovira-paper);
   color: var(--sovira-black);
-  font-family: 'Suisse Int\'l', system-ui, -apple-system, sans-serif;
+  font-family: 'Neue Haas Grotesk Display', system-ui, -apple-system, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   letter-spacing: 0.02em;
@@ -78,14 +135,14 @@ body {
   outline-offset: 2px;
 }
 
-/* Selection color */
-::selection {
-  background: var(--sovira-chartreuse);
-  color: var(--sovira-black);
-}
-
 /* Smooth transitions for interactive elements */
 a,
 button {
   transition: all 150ms ease-out;
+}
+
+mark {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
 }

@@ -61,7 +61,7 @@ export default function BrandReadySprint() {
           <p className="font-spectral italic text-sovira-chartreuse text-xl mb-4">
             Path 1
           </p>
-          <h2 className="font-neue-haas text-h3 md:text-h2 font-bold mb-6">
+          <h2 className="font-neue-haas text-4xl md:text-6xl font-bold mb-6">
             Brand-Ready Sprint
           </h2>
           <p className="font-neue-haas text-2xl md:text-3xl text-sovira-paper/90 max-w-2xl mx-auto">
