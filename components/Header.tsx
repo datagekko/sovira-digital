@@ -10,12 +10,12 @@ export default function Header() {
         <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-screen-xl relative">
           <div className="flex items-center justify-between py-4">
             {/* Logo: Grid icon + SOVIRA wordmark */}
-            <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
+            <Link href="/" className="flex items-center gap-1 md:gap-3 hover:opacity-90 transition-opacity w-[125px] md:w-auto">
               {/* Grid icon - thin line, 2px stroke, rounded joins */}
-              <div className="w-8 h-8 flex items-center justify-center">
+              <div className="w-8 h-8 md:w-8 md:h-8 flex items-center justify-center">
                 <svg 
-                  width="24" 
-                  height="24" 
+                  width="32" 
+                  height="32" 
                   viewBox="0 0 24 24" 
                   fill="none" 
                   className="text-sovira-black"
@@ -36,17 +36,18 @@ export default function Header() {
               </div>
               
               {/* SOVIRA wordmark */}
-              <h1 className="font-neue-haas font-bold text-xl text-sovira-black tracking-wide">
+              <h1 className="font-neue-haas font-bold text-base md:text-xl text-sovira-black tracking-wide">
                 SOVIRA
               </h1>
             </Link>
 
-            {/* CTA Button */}
+            {/* CTA Button - hidden on mobile, visible md+ */}
             <a 
               href="https://calendar.app.google/H2rgeWTpMBDyQzNE6"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative px-6 py-3 bg-sovira-black text-sovira-paper font-neue-haas font-bold text-sm rounded-sm hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0 transition-all duration-150"
+              className="hidden md:inline-block group relative px-6 py-3 bg-sovira-black text-sovira-paper font-neue-haas font-bold text-sm rounded-sm whitespace-nowrap max-w-full overflow-x-auto hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0 transition-all duration-150"
+              style={{ WebkitTextSizeAdjust: 'none' }}
             >
               Book Free Discover Call
               {/* Arrow animation on hover */}
