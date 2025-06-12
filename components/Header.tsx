@@ -1,11 +1,16 @@
+import Link from 'next/link';
+import GrainOverlay from './GrainOverlay';
+
 export default function Header() {
   return (
-    <header className="relative z-50 w-full">
-      <div className="glass backdrop-blur-md bg-sovira-paper/80 border-b border-sovira-paper/10">
-        <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-screen-xl">
+    <header className="sticky top-0 z-50 w-full">
+      <div className="bg-sovira-paper border-b border-sovira-paper/10 relative">
+        <GrainOverlay />
+        
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-screen-xl relative">
           <div className="flex items-center justify-between py-4">
             {/* Logo: Grid icon + SOVIRA wordmark */}
-            <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
               {/* Grid icon - thin line, 2px stroke, rounded joins */}
               <div className="w-8 h-8 flex items-center justify-center">
                 <svg 
@@ -34,7 +39,7 @@ export default function Header() {
               <h1 className="font-neue-haas font-bold text-xl text-sovira-black tracking-wide">
                 SOVIRA
               </h1>
-            </div>
+            </Link>
 
             {/* CTA Button */}
             <a 

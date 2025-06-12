@@ -11,10 +11,10 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex flex-wrap gap-6 text-sm">
-            <a href="#" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
+            <a href="/privacy" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
               Privacy
             </a>
-            <a href="#" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
+            <a href="/terms" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
               Terms
             </a>
             <a href="#" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
