@@ -37,11 +37,16 @@ export default function Header() {
             </div>
 
             {/* CTA Button */}
-            <button className="group relative px-6 py-3 bg-sovira-black text-sovira-paper font-neue-haas font-bold text-sm rounded-sm hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0 transition-all duration-150">
+            <a 
+              href="https://calendar.app.google/H2rgeWTpMBDyQzNE6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative px-6 py-3 bg-sovira-black text-sovira-paper font-neue-haas font-bold text-sm rounded-sm hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0 transition-all duration-150"
+            >
               Book Free Discover Call
               {/* Arrow animation on hover */}
               <span className="inline-block ml-2 transition-transform duration-150 group-hover:translate-x-1">→</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
