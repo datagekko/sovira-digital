@@ -105,8 +105,9 @@ Apply these conventions across all repositories—Shopify theme, headless front�
 // Glass header with grid icon + SOVIRA wordmark + CTA
 <header className="glass backdrop-blur-md bg-sovira-paper/80 border-b border-sovira-paper/10">
   // Grid icon: 3x3 matrix, 2px stroke, rounded joins
-  // SOVIRA wordmark: tracking-[0.2em] uppercase  
-  // CTA: chartreuse with hover states
+  // SOVIRA wordmark: tracking-[0.2em] uppercase
+  // On mobile: logo (icon + wordmark) is 125px wide (w-[125px] md:w-auto)
+  // CTA: chartreuse with hover states, hidden on mobile (hidden md:inline-block), always single-line (whitespace-nowrap)
 </header>
 ```
 
@@ -117,8 +118,10 @@ Apply these conventions across all repositories—Shopify theme, headless front�
   <div className="absolute inset-0 blur-3xl bg-sovira-chartreuse/25" />
   <div className="absolute inset-0 blur-xl bg-sovira-chartreuse/40" />
   <div className="absolute inset-0 blur-md bg-sovira-chartreuse/30" />
-  <h1 className="relative">Launch in 14 days</h1>
+  <h1 className="relative text-[48px] md:text-[96px] font-bold">Ready to sell in<br /><span className="glow">14 days</span></h1>
 </div>
+// Copy: Medium headline, main headline, sub-headline, CTA, trust indicators (✓ €1M+ brands trust us, ✓ 90-day performance pledge)
+// Scroll indicator: always visible within the fold, directly below guarantees, minimal spacing (mb-4 md:mb-6), no flex-end alignment
 ```
 
 ## ✨ Glassmorphism System (Implemented)
