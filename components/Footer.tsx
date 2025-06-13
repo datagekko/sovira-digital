@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Footer() {
   return (
     <footer className="py-12 bg-sovira-black text-sovira-paper">
@@ -17,9 +19,9 @@ export default function Footer() {
             <a href="/terms" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
               Terms
             </a>
-            <a href="#" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
+            <Link href="/how-we-transform" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
               Work
-            </a>
+            </Link>
             <a href="https://wa.me/4549408470" className="text-sovira-paper/60 hover:text-sovira-chartreuse transition-colors">
               Contact
             </a>
