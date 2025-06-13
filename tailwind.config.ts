@@ -23,6 +23,7 @@ const config = {
         'sovira-graphite': '#2F2F2F',
         'sovira-paper': '#F4F4F4',
         'sovira-chartreuse': '#C6FF00',
+        'sovira-chartreuse-dark': '#A8D900',
         'sovira-chartreuse-readable': '#6564DB',
         'sovira-neutral': '#9B9B9B',
         border: "hsl(var(--border))",
@@ -64,8 +65,11 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        'sovira-cta': '0 0 40px -10px rgba(198, 255, 0, 0.5)',
+      },
       fontFamily: {
-        'neue-haas': ['Neue Haas Grotesk Display', 'system-ui', 'sans-serif'],
+        'neue-haas': ['"Neue Haas Grotesk Display"', 'system-ui', 'sans-serif'],
         'spectral': ['Spectral', 'serif'],
       },
       keyframes: {

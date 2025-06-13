@@ -1,4 +1,5 @@
 import GrainOverlay from './GrainOverlay';
+import Link from 'next/link';
 
 export default function HeroSection() {
   // Reserve 64px for header, 56px for scroll indicator
@@ -30,16 +31,14 @@ export default function HeroSection() {
             </p>
             {/* Primary CTA - single, clear action */}
             <div className="flex flex-col gap-4 justify-center items-center mb-4 md:mb-6 w-full">
-              <a 
-                href="https://calendar.app.google/H2rgeWTpMBDyQzNE6"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link 
+                href="/how-we-transform"
                 className="group relative px-8 py-4 bg-sovira-black text-sovira-paper font-neue-haas font-bold text-lg rounded-sm whitespace-nowrap hover:shadow-sovira-cta hover:-translate-y-px active:translate-y-0 transition-all duration-150"
               >
-                Book Discovery Call
+                See How
                 {/* Arrow animation on hover */}
                 <span className="inline-block ml-2 transition-transform duration-150 group-hover:translate-x-1">→</span>
-              </a>
+              </Link>
             </div>
             {/* Trust indicators - social proof */}
             <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-sovira-neutral text-sm mb-2">
